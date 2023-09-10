@@ -1,5 +1,5 @@
 {
-  "extends": ["next/core-web-vitals", "@wonse/eslint-config"],
+  "extends": ["next/core-web-vitals", "@wonse/eslint-config", "plugin:tailwindcss/recommended"],
   "rules": {
     "no-restricted-exports": "off"
   }
