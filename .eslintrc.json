@@ -1,3 +1,6 @@
 {
-  "extends": ["next/core-web-vitals", "@wonse/eslint-config"]
+  "extends": ["next/core-web-vitals", "@wonse/eslint-config"],
+  "rules": {
+    "no-restricted-exports": "off"
+  }
 }
