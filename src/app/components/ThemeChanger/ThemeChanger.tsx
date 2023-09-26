@@ -1,25 +1,84 @@
 'use client';
 
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import { SunIcon } from '@radix-ui/react-icons';
+import clsx from 'clsx';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
 function ThemeChanger() {
   const [mounted, setMounted] = useState(false);
-  const { setTheme, theme } = useTheme();
+  const { setTheme, systemTheme, theme } = useTheme();
+
+  const handleClickLightTheme = () => {
+    setTheme('light');
+    localStorage.setItem('theme', 'light');
+  };
+
+  const handleClickDarkTheme = () => {
+    setTheme('dark');
+    localStorage.setItem('theme', 'dark');
+  };
+
+  const handleClickSystemTheme = () => {
+    setTheme(systemTheme ?? 'light');
+    localStorage.removeItem('theme');
+  };
+
+  useEffect(() => {
+    if (
+      localStorage.getItem('theme') === 'dark' ||
+      (!('theme' in localStorage) &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [theme]);
 
   useEffect(() => setMounted(true), []);
-
   if (!mounted) return null;
 
   return (
-    <div>
-      <button onClick={() => setTheme('light')} type="button">
-        Light Mode
-      </button>
-      <button onClick={() => setTheme('dark')} type="button">
-        Dark Mode
-      </button>
-    </div>
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger asChild className="aspect-square w-12">
+        <button className="w-12" type="button">
+          <SunIcon height={24} width={24} />
+        </button>
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content
+          className={clsx(
+            'mt-2 flex h-full flex-col gap-2 rounded-xl border border-transparent bg-white p-4 text-gray-400 shadow-md dark:bg-gray-900 dark:text-white'
+          )}
+        >
+          <DropdownMenu.Item className="hover:opacity-75">
+            <button
+              className={clsx(theme === 'light' && 'text-gray-600')}
+              onClick={handleClickLightTheme}
+              type="button"
+            >
+              Light
+            </button>
+          </DropdownMenu.Item>
+          <DropdownMenu.Item>
+            <button
+              className={clsx(theme === 'dark' && 'text-gray-400')}
+              onClick={handleClickDarkTheme}
+              type="button"
+            >
+              Dark
+            </button>
+          </DropdownMenu.Item>
+          <DropdownMenu.Item>
+            <button onClick={handleClickSystemTheme} type="button">
+              System
+            </button>
+          </DropdownMenu.Item>
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
+    </DropdownMenu.Root>
   );
 }
 

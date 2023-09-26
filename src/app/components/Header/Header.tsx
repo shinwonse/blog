@@ -1,9 +1,14 @@
+import { HamburgerMenuIcon, SunIcon } from '@radix-ui/react-icons';
+
 function Header() {
   return (
-    <nav className="flex w-full flex-row items-center justify-between">
-      <div className="bg-blue-400">hello</div>
-      <div className="bg-red-400">bye</div>
-    </nav>
+    <header className="flex h-[60px] w-full flex-row items-center justify-between rounded-full border px-6">
+      <SunIcon />
+      <span>WONSE</span>
+      <button type="button">
+        <HamburgerMenuIcon />
+      </button>
+    </header>
   );
 }
 
