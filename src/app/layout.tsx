@@ -4,7 +4,6 @@ import clsx from 'clsx';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
-import Footer from '@/app/components/Footer';
 import Header from '@/app/components/Header';
 import ThemeProvider from '@/app/components/ThemeProvider';
 
