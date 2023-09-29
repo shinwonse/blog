@@ -60,6 +60,7 @@
     "glob": "^10.3.4",
     "prettier": "^2.8.8",
     "storybook": "^7.4.0",
+    "tsconfig-paths-webpack-plugin": "^4.1.0",
     "typescript": "5.2.2"
   }
 }
