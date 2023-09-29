@@ -1,13 +1,16 @@
-import { HamburgerMenuIcon, SunIcon } from '@radix-ui/react-icons';
+import Link from 'next/link';
+
+import ThemeChanger from '@/app/components/ThemeChanger';
 
 function Header() {
   return (
-    <header className="flex h-[60px] w-full flex-row items-center justify-between rounded-full border px-6">
-      <SunIcon />
-      <span>WONSE</span>
-      <button type="button">
-        <HamburgerMenuIcon />
-      </button>
+    <header className="flex flex-row items-center justify-between p-2">
+      <Link href="/">처음으로</Link>
+      <div className="flex flex-row items-center gap-8">
+        <Link href="/blog">블로그</Link>
+        <Link href="/about">소개</Link>
+        <ThemeChanger />
+      </div>
     </header>
   );
 }
