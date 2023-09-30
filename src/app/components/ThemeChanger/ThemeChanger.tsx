@@ -50,7 +50,7 @@ function ThemeChanger() {
       <DropdownMenu.Portal>
         <DropdownMenu.Content
           className={clsx(
-            'mt-2 flex h-full flex-col gap-2 rounded-xl border border-transparent bg-white p-4 text-gray-400 shadow-md dark:bg-gray-900 dark:text-white'
+            'mt-2 flex h-full flex-col gap-2 rounded-xl border border-transparent bg-white p-4 text-gray-400 shadow-md dark:bg-neutral-800 dark:text-white'
           )}
         >
           <DropdownMenu.Item className="hover:opacity-75">

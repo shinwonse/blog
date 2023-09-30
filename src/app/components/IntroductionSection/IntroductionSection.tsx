@@ -11,10 +11,10 @@ function IntroductionSection() {
         <p className={clsx('mt-2')}>평생 재미있게 개발하고 싶습니다</p>
       </div>
       <Image
-        alt="임시"
+        alt="profile"
         className={clsx('rounded-full')}
         height={192}
-        src="https://placehold.co/400"
+        src="/profile.png"
         unoptimized
         width={192}
       />
