@@ -49,6 +49,7 @@ function ThemeChanger() {
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content
+          align="end"
           className={clsx(
             'mt-2 flex h-full flex-col gap-2 rounded-xl border border-transparent bg-white p-4 text-gray-400 shadow-md dark:bg-neutral-800 dark:text-white'
           )}
