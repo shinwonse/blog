@@ -9,7 +9,7 @@ async function RecentPostSection() {
   const posts = await Promise.resolve(getPosts());
 
   return (
-    <Section className={clsx('w-full p-2')} layout="grid" title="최근 포스트">
+    <Section className={clsx('w-full')} layout="grid" title="최근 포스트">
       {posts.map(({ description, title }) => (
         <Link key={title} href={`posts/${title?.slug}`}>
           <Card description={description} title={title} />

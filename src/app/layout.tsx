@@ -44,7 +44,8 @@ export default function RootLayout({
           <div
             className={clsx(
               'mx-auto flex flex-col justify-center',
-              'max-w-3xl'
+              'max-w-3xl',
+              'p-6'
             )}
           >
             <Header />

@@ -4,7 +4,7 @@ import RecentPostSection from '@/app/components/RecentPostSection';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center gap-12">
+    <main className="mt-4 flex min-h-screen flex-col items-center gap-12">
       <IntroductionSection />
       <RecentPostSection />
       <ProjectSection />
