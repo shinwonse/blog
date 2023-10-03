@@ -10,8 +10,8 @@ async function RecentPostSection() {
 
   return (
     <Section className={clsx('w-full')} layout="grid" title="최근 포스트">
-      {posts.map(({ description, title }) => (
-        <Link key={title} href={`posts/${title?.slug}`}>
+      {posts.map(({ description, slug, title }) => (
+        <Link key={title} href={`posts${slug}`}>
           <Card description={description} title={title} />
         </Link>
       ))}

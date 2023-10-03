@@ -1,10 +1,24 @@
 import { Client } from '@notionhq/client';
 import camelcaseKeys from 'camelcase-keys';
 import dayjs from 'dayjs';
+import { NotionToMarkdown } from 'notion-to-md';
+import rehypeHighlight from 'rehype-highlight';
+import rehypeRaw from 'rehype-raw';
+import rehypeStringify from 'rehype-stringify';
+import { remark } from 'remark';
+import remarkGfm from 'remark-gfm';
+import remarkRehype from 'remark-rehype';
+
+import { BLOG_DATABASE_ID } from '@/constants/notion';
+import { rehypeA11y } from '@/utils/rehypeA11y';
+import { rehypeBreakLine } from '@/utils/rehypeBreakLine';
+import { rehypeTOC } from '@/utils/rehypeTOC';
 
 const notion = new Client({
   auth: process.env.NEXT_PUBLIC_NOTION_SECRET_TOKEN,
 });
+
+const n2m = new NotionToMarkdown({ notionClient: notion });
 
 const processPost = (result: any) => {
   const { createdTime, lastEditedTime, properties } = camelcaseKeys(result, {
@@ -31,7 +45,34 @@ export const getDatabase = async () => {
 
 export const getPosts = async () => {
   const response = await notion.databases.query({
-    database_id: 'bf942e3026c44977bf63cb0a28025d91',
+    database_id: BLOG_DATABASE_ID,
   });
   return response.results.map(processPost);
+};
+
+export const getPost = async (slug: string) => {
+  const { results } = await notion.databases.query({
+    database_id: BLOG_DATABASE_ID,
+    filter: { and: [{ property: 'slug', rich_text: { equals: `/${slug}` } }] },
+  });
+  const [response] = results;
+  const mdBlocks = await n2m.pageToMarkdown(response.id);
+  const mdString = n2m.toMarkdownString(mdBlocks);
+  if (!mdString.parent) {
+    throw new Error('Empty content');
+  }
+  const { data, value } = await remark()
+    .use(remarkGfm)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeBreakLine)
+    .use(rehypeHighlight)
+    .use(rehypeRaw)
+    .use(rehypeTOC)
+    .use(rehypeA11y)
+    .use(rehypeStringify)
+    .process(mdString.parent.trim());
+  return {
+    content: value.toString(),
+    ...processPost(response),
+  };
 };

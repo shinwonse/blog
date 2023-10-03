@@ -7,7 +7,6 @@ function Header() {
     <header className="flex flex-row items-center justify-between font-bold">
       <Link href="/">처음으로</Link>
       <div className="flex flex-row items-center gap-8">
-        <Link href="/blog">블로그</Link>
         <Link href="/about">소개</Link>
         <ThemeChanger />
       </div>
