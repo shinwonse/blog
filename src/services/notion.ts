@@ -53,7 +53,7 @@ export const getPost = async (slug: string) => {
     filter: { and: [{ property: 'slug', rich_text: { equals: `/${slug}` } }] },
   });
   const [response] = results;
-  const mdBlocks = await n2m.pageToMarkdown(response.id);
+  const mdBlocks = await n2m.pageToMarkdown(response.id ?? '');
   const mdString = n2m.toMarkdownString(mdBlocks);
   if (!mdString.parent) {
     throw new Error('Empty content');
