@@ -14,8 +14,7 @@ interface BlockProps {
 }
 
 function Block({ blockContent, className }: BlockProps) {
-  const { dateRange, department, description, englishName, koreanName } =
-    blockContent;
+  const { dateRange, department, englishName, koreanName } = blockContent;
 
   return (
     <div className={clsx(className, 'w-full', 'flex flex-row', 'items-center')}>

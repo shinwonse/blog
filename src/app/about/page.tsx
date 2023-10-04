@@ -26,7 +26,7 @@ function AboutPage() {
   return (
     <main>
       <h1>안녕하세요! 개발자 신원세입니다.</h1>
-      <p>지금은 ktown4u에서 글로벌 팬과 K-Pop을 연결하는 일을 하고 있습니다.</p>
+      <p>지금은 ktown4u에서 글로벌 팬과 K-Pop을 연결하고 있습니다.</p>
       <div className={clsx('flex flex-col', 'gap-12')}>
         <TimeLine className={clsx('mt-4')} data={careers} title="Careers" />
         <TimeLine

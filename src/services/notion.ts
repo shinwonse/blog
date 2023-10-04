@@ -10,9 +10,6 @@ import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
 
 import { BLOG_DATABASE_ID } from '@/constants/notion';
-import { rehypeA11y } from '@/utils/rehypeA11y';
-import { rehypeBreakLine } from '@/utils/rehypeBreakLine';
-import { rehypeTOC } from '@/utils/rehypeTOC';
 
 const notion = new Client({
   auth: process.env.NEXT_PUBLIC_NOTION_SECRET_TOKEN,
@@ -61,14 +58,11 @@ export const getPost = async (slug: string) => {
   if (!mdString.parent) {
     throw new Error('Empty content');
   }
-  const { data, value } = await remark()
+  const { value } = await remark()
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypeBreakLine)
     .use(rehypeHighlight)
     .use(rehypeRaw)
-    .use(rehypeTOC)
-    .use(rehypeA11y)
     .use(rehypeStringify)
     .process(mdString.parent.trim());
   return {
