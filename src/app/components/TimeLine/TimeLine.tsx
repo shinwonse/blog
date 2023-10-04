@@ -19,7 +19,7 @@ function TimeLine({ className, data, title }: TimeLineProps) {
         {data?.map((career) => {
           return (
             <Block
-              key={career.companyKR}
+              key={career.koreanName}
               blockContent={career}
               className={clsx('w-full')}
             />
