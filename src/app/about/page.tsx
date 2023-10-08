@@ -25,16 +25,22 @@ const activities = [
 function AboutPage() {
   return (
     <main>
-      <h1>안녕하세요! 개발자 신원세입니다.</h1>
-      <p>지금은 ktown4u에서 글로벌 팬과 K-Pop을 연결하고 있습니다.</p>
-      <div className={clsx('flex flex-col', 'gap-12')}>
+      <section className={clsx('py-12')}>
+        <h1 className={clsx('text-3xl', 'mb-1')}>
+          안녕하세요! 개발자 신원세입니다.
+        </h1>
+        <p className={clsx('')}>
+          현재 ktown4u에서 글로벌 팬과 K-POP을 연결하고 있습니다.
+        </p>
+      </section>
+      <section className={clsx('flex flex-col', 'gap-12')}>
         <TimeLine className={clsx('mt-4')} data={careers} title="Careers" />
         <TimeLine
           className={clsx('mt-4')}
           data={activities}
           title="Activities"
         />
-      </div>
+      </section>
     </main>
   );
 }
