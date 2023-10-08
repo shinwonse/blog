@@ -18,7 +18,7 @@ function Section({ children, className, layout, title }: SectionProps) {
           layout === 'grid' &&
             'grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3',
           layout === 'flex' &&
-            'flex flex-row items-center justify-between gap-4'
+            'flex flex-col items-center justify-between gap-4 sm:flex-row'
         )}
       >
         {children}
