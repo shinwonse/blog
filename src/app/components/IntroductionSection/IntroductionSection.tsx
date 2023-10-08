@@ -6,7 +6,7 @@ import Section from '@/app/components/Section';
 function IntroductionSection() {
   return (
     <Section className={clsx('w-full')} layout="flex">
-      <div>
+      <div className={clsx('order-1 sm:-order-1')}>
         <h2 className={clsx('text-3xl font-bold')}>신원세입니다</h2>
         <p className={clsx('mt-2')}>평생 재미있게 개발하고 싶습니다</p>
       </div>
