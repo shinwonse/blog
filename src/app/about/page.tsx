@@ -25,7 +25,7 @@ const activities = [
 function AboutPage() {
   return (
     <main>
-      <section className={clsx('py-12')}>
+      <section className={clsx('flex flex-col items-center', 'py-12')}>
         <h1 className={clsx('text-3xl', 'mb-1')}>
           안녕하세요! 개발자 신원세입니다.
         </h1>
