@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
+import Footer from '@/app/components/Footer';
 import Header from '@/app/components/Header';
 import ThemeProvider from '@/app/components/ThemeProvider';
 
@@ -45,11 +46,12 @@ export default function RootLayout({
             className={clsx(
               'mx-auto flex flex-col justify-center',
               'max-w-3xl',
-              'p-6'
+              'p-6 pb-0'
             )}
           >
             <Header />
             {children}
+            <Footer />
           </div>
         </ThemeProvider>
       </body>
