@@ -14,7 +14,7 @@ function TimeLine({ className, data, title }: TimeLineProps) {
     <section
       className={clsx(className, 'w-full', 'flex flex-col items-center')}
     >
-      <h2 className={clsx('text-3xl')}>{title}</h2>
+      <h2 className={clsx('text-xl sm:text-3xl')}>{title}</h2>
       <div className={clsx('w-full', 'py-8', 'flex flex-col gap-4')}>
         {data?.map((career) => {
           return (

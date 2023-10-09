@@ -18,11 +18,17 @@ function Block({ blockContent, className }: BlockProps) {
 
   return (
     <div className={clsx(className, 'w-full', 'flex flex-row', 'items-center')}>
-      <div className={clsx('w-48')}>{dateRange}</div>
+      <div className={clsx('w-32 sm:w-48', 'text-xs sm:text-base')}>
+        {dateRange}
+      </div>
       <div className={clsx('flex flex-col')}>
         <p className={clsx('flex flex-row items-center')}>
-          <span className={clsx('mr-1', 'font-medium')}>{englishName}</span>
-          <span className={clsx('text-sm text-neutral-400')}>{koreanName}</span>
+          <span className={clsx('mr-1', 'text-sm font-medium sm:text-base')}>
+            {englishName}
+          </span>
+          <span className={clsx('text-xs text-neutral-400 sm:text-sm')}>
+            {koreanName}
+          </span>
         </p>
         <p className={clsx('flex flex-row', 'text-sm text-neutral-400')}>
           <span>{department}</span>

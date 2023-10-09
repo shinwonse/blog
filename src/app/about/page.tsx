@@ -26,10 +26,10 @@ function AboutPage() {
   return (
     <main>
       <section className={clsx('flex flex-col items-center', 'py-12')}>
-        <h1 className={clsx('text-3xl', 'mb-1')}>
+        <h1 className={clsx('text-base sm:text-3xl', 'mb-1')}>
           안녕하세요! 개발자 신원세입니다.
         </h1>
-        <p className={clsx('')}>
+        <p className={clsx('text-sm sm:text-base')}>
           현재 ktown4u에서 글로벌 팬과 K-POP을 연결하고 있습니다.
         </p>
       </section>
