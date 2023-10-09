@@ -55,20 +55,12 @@ function ThemeChanger() {
           )}
         >
           <DropdownMenu.Item className="hover:opacity-75">
-            <button
-              className={clsx(theme === 'light' && 'text-gray-600')}
-              onClick={handleClickLightTheme}
-              type="button"
-            >
+            <button onClick={handleClickLightTheme} type="button">
               Light
             </button>
           </DropdownMenu.Item>
           <DropdownMenu.Item>
-            <button
-              className={clsx(theme === 'dark' && 'text-gray-400')}
-              onClick={handleClickDarkTheme}
-              type="button"
-            >
+            <button onClick={handleClickDarkTheme} type="button">
               Dark
             </button>
           </DropdownMenu.Item>
