@@ -1,23 +1,25 @@
 import clsx from 'clsx';
 
-import Card from '@/app/components/Card';
+import ProjectCard from '@/app/components/ProjectCard';
 import Section from '@/app/components/Section';
+import { getProjects } from '@/services/notion';
 
-function ProjectSection() {
+async function ProjectSection() {
+  const projects = await Promise.resolve(getProjects());
+
   return (
     <Section className={clsx('w-full')} layout="grid" title="프로젝트">
-      <Card
-        description="안녕하세요. 프론트엔드 개발자 신원세입니다."
-        title="개발자 신원세"
-      />
-      <Card
-        description="안녕하세요. 프론트엔드 개발자 신원세입니다."
-        title="개발자 신원세"
-      />
-      <Card
-        description="안녕하세요. 프론트엔드 개발자 신원세입니다."
-        title="개발자 신원세"
-      />
+      {projects.map((project) => {
+        return (
+          <ProjectCard
+            key={project.title}
+            description={project.description}
+            githubUrl={project.githubUrl}
+            serviceUrl={project.serviceUrl}
+            title={project.title}
+          />
+        );
+      })}
     </Section>
   );
 }

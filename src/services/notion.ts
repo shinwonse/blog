@@ -10,7 +10,7 @@ import { remark } from 'remark';
 import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
 
-import { BLOG_DATABASE_ID } from '@/constants/notion';
+import { BLOG_DATABASE_ID, PROJECT_DATABASE_ID } from '@/constants/notion';
 
 const notion = new Client({
   auth: process.env.NEXT_PUBLIC_NOTION_SECRET_TOKEN,
@@ -33,12 +33,33 @@ const processPost = (result: any) => {
   };
 };
 
+const processProject = (result: any) => {
+  const { createdTime, lastEditedTime, properties } = camelcaseKeys(result, {
+    deep: true,
+  });
+  const { description, github, service, title } = properties;
+  return {
+    createdTime: dayjs(createdTime),
+    description: description.richText[0]?.plainText ?? null,
+    githubUrl: github.url,
+    lastEditedTime: dayjs(lastEditedTime),
+    serviceUrl: service.url,
+    title: title.title[0]?.plainText ?? '',
+  };
+};
+
 export const getDatabase = async () => {
   const posts = await notion.databases.retrieve({
     database_id: 'bf942e3026c44977bf63cb0a28025d91',
   });
-
   return posts;
+};
+
+export const getProjects = async () => {
+  const response = await notion.databases.query({
+    database_id: PROJECT_DATABASE_ID,
+  });
+  return response.results.map(processProject);
 };
 
 export const getPosts = async () => {

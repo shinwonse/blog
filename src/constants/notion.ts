@@ -1,2 +1,3 @@
 export const BLOG_DATABASE_ID = 'bf942e3026c44977bf63cb0a28025d91';
 export const BOOK_DATABASE_ID = '14d67f1da4654acbb38d37ff025b7542';
+export const PROJECT_DATABASE_ID = '633038aea5dd4de2ac2524cf4a27d979';
