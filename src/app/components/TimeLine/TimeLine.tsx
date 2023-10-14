@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 
 import Block from '@/app/components/TimeLine/Block';
-import { BlockContent } from '@/app/components/TimeLine/Block/Block';
+import type { BlockContent } from '@/app/components/TimeLine/Block/Block';
 
 interface TimeLineProps {
   className?: string;
