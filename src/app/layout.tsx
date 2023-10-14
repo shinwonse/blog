@@ -1,12 +1,12 @@
 import '../styles/globals.css';
 
-import clsx from 'clsx';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
 import Footer from '@/app/components/Footer';
 import Header from '@/app/components/Header';
 import ThemeProvider from '@/app/components/ThemeProvider';
+import { cn } from '@/utils/cn';
 
 const GmarketSans = localFont({
   src: [
@@ -40,13 +40,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" suppressHydrationWarning>
-      <body className={clsx(GmarketSans.className)}>
+      <body className={cn(GmarketSans.className)}>
         <ThemeProvider>
           <div
-            className={clsx(
-              'mx-auto flex flex-col justify-center',
-              'max-w-3xl',
-              'p-6 pb-0'
+            className={cn(
+              'mx-auto flex max-w-3xl flex-col justify-center p-6 pb-0'
             )}
           >
             <Header />

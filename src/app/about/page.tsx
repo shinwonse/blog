@@ -1,6 +1,5 @@
-import clsx from 'clsx';
-
 import TimeLine from '@/app/components/TimeLine';
+import { cn } from '@/utils/cn';
 
 const careers = [
   {
@@ -44,26 +43,18 @@ const educations = [
 function AboutPage() {
   return (
     <main>
-      <section className={clsx('flex flex-col items-center', 'py-12')}>
-        <h1 className={clsx('text-base sm:text-3xl', 'mb-1')}>
+      <section className={cn('flex flex-col items-center py-12')}>
+        <h1 className={cn('mb-1 text-base sm:text-3xl')}>
           안녕하세요! 개발자 신원세입니다.
         </h1>
-        <p className={clsx('text-sm sm:text-base')}>
+        <p className={cn('text-sm sm:text-base')}>
           현재 ktown4u에서 글로벌 팬과 K-POP을 연결하고 있습니다.
         </p>
       </section>
-      <section className={clsx('flex flex-col', 'gap-12')}>
-        <TimeLine className={clsx('mt-4')} data={careers} title="Careers" />
-        <TimeLine
-          className={clsx('mt-4')}
-          data={activities}
-          title="Activities"
-        />
-        <TimeLine
-          className={clsx('mt-4')}
-          data={educations}
-          title="Education"
-        />
+      <section className={cn('flex flex-col gap-12')}>
+        <TimeLine className={cn('mt-4')} data={careers} title="Careers" />
+        <TimeLine className={cn('mt-4')} data={activities} title="Activities" />
+        <TimeLine className={cn('mt-4')} data={educations} title="Education" />
       </section>
     </main>
   );

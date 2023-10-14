@@ -1,7 +1,8 @@
 import { ExternalLinkIcon, GitHubLogoIcon } from '@radix-ui/react-icons';
-import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
+
+import { cn } from '@/utils/cn';
 
 const Thumbnails = {
   술로그: '/sullog.png',
@@ -24,30 +25,24 @@ function ProjectCard({
 }: ProjectCardProps) {
   return (
     <div
-      className={clsx(
-        className,
-        'flex flex-col',
-        'gap-2',
-        'rounded-xl',
-        'shadow-xl',
-        'hover:scale-[1.01]',
-        'bg-neutral-50',
-        'dark:bg-neutral-800'
+      className={cn(
+        'flex flex-col gap-2 rounded-xl bg-neutral-50 shadow-xl hover:scale-[1.01] dark:bg-neutral-800',
+        className
       )}
     >
-      <div className={clsx('relative', 'aspect-square')}>
+      <div className={cn('relative aspect-square')}>
         <Image
           alt={title}
-          className={clsx('rounded-t-xl')}
+          className={cn('rounded-t-xl')}
           fill
           src={Thumbnails.술로그}
           style={{ objectFit: 'cover' }}
         />
       </div>
-      <div className={clsx('flex flex-col', 'gap-2 p-8')}>
-        <div className={clsx('flex flex-row items-center', 'gap-2')}>
-          <h3 className="text-xl font-bold">{title}</h3>
-          <div className={clsx('flex flex-row', 'gap-1')}>
+      <div className={cn('flex flex-col gap-2 p-8')}>
+        <div className={cn('flex flex-row items-center gap-2')}>
+          <h3 className={cn('text-xl font-bold')}>{title}</h3>
+          <div className={cn('flex flex-row gap-1')}>
             <Link href={githubUrl} target="_blank">
               <GitHubLogoIcon />
             </Link>
@@ -56,7 +51,7 @@ function ProjectCard({
             </Link>
           </div>
         </div>
-        <p className="text-sm opacity-75">{description}</p>
+        <p className={cn('text-sm opacity-75')}>{description}</p>
       </div>
     </div>
   );

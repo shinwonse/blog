@@ -2,9 +2,10 @@
 
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { SunIcon } from '@radix-ui/react-icons';
-import clsx from 'clsx';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
+
+import { cn } from '@/utils/cn';
 
 function ThemeChanger() {
   const [mounted, setMounted] = useState(false);
@@ -50,7 +51,7 @@ function ThemeChanger() {
       <DropdownMenu.Portal>
         <DropdownMenu.Content
           align="end"
-          className={clsx(
+          className={cn(
             'mt-2 flex h-full flex-col gap-2 rounded-xl border border-transparent bg-white p-4 text-gray-400 shadow-md dark:bg-neutral-800 dark:text-white'
           )}
         >

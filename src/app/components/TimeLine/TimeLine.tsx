@@ -1,7 +1,6 @@
-import clsx from 'clsx';
-
 import Block from '@/app/components/TimeLine/Block';
 import type { BlockContent } from '@/app/components/TimeLine/Block/Block';
+import { cn } from '@/utils/cn';
 
 interface TimeLineProps {
   className?: string;
@@ -11,17 +10,15 @@ interface TimeLineProps {
 
 function TimeLine({ className, data, title }: TimeLineProps) {
   return (
-    <section
-      className={clsx(className, 'w-full', 'flex flex-col items-center')}
-    >
-      <h2 className={clsx('text-xl sm:text-3xl')}>{title}</h2>
-      <div className={clsx('w-full', 'py-8', 'flex flex-col gap-4')}>
+    <section className={cn('flex w-full flex-col items-center', className)}>
+      <h2 className={cn('text-xl sm:text-3xl')}>{title}</h2>
+      <div className={cn('flex w-full flex-col gap-4 py-8')}>
         {data?.map((career) => {
           return (
             <Block
               key={career.koreanName}
               blockContent={career}
-              className={clsx('w-full')}
+              className={cn('w-full')}
             />
           );
         })}

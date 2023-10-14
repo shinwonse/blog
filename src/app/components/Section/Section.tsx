@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { cn } from '@/utils/cn';
 
 interface SectionProps {
   children: React.ReactNode;
@@ -9,12 +9,10 @@ interface SectionProps {
 
 function Section({ children, className, layout, title }: SectionProps) {
   return (
-    <section className={clsx(className)}>
-      {title && (
-        <h2 className={clsx('w-full', 'mb-4', 'font-bold')}>{title}</h2>
-      )}
+    <section className={cn(className)}>
+      {title && <h2 className={cn('mb-4 w-full font-bold')}>{title}</h2>}
       <div
-        className={clsx(
+        className={cn(
           layout === 'grid' &&
             'grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3',
           layout === 'flex' &&

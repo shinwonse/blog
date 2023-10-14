@@ -3,5 +3,10 @@
   "rules": {
     "no-restricted-exports": "off",
     "@typescript-eslint/consistent-type-imports": "error"
+  },
+  "settings": {
+    "tailwindcss": {
+      "callees": ["cn"]
+    }
   }
 }

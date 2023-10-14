@@ -1,10 +1,10 @@
-import clsx from 'clsx';
+import { cn } from '@/utils/cn';
 
 function Footer() {
   return (
-    <footer className={clsx('flex w-full flex-col items-center', 'py-8')}>
+    <footer className={cn('flex w-full flex-col items-center py-8')}>
       <span
-        className={clsx(
+        className={cn(
           'text-xs font-light text-neutral-800 dark:text-neutral-300'
         )}
       >

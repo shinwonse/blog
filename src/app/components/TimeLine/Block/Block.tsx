@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { cn } from '@/utils/cn';
 
 export type BlockContent = {
   dateRange: string;
@@ -17,20 +17,18 @@ function Block({ blockContent, className }: BlockProps) {
   const { dateRange, department, englishName, koreanName } = blockContent;
 
   return (
-    <div className={clsx(className, 'w-full', 'flex flex-row', 'items-center')}>
-      <div className={clsx('w-32 sm:w-48', 'text-xs sm:text-base')}>
-        {dateRange}
-      </div>
-      <div className={clsx('flex flex-col')}>
-        <p className={clsx('flex flex-row items-center')}>
-          <span className={clsx('mr-1', 'text-sm font-medium sm:text-base')}>
+    <div className={cn(className, 'flex w-full flex-row items-center')}>
+      <div className={cn('w-32 text-xs sm:w-48 sm:text-base')}>{dateRange}</div>
+      <div className={cn('flex flex-col')}>
+        <p className={cn('flex flex-row items-center')}>
+          <span className={cn('mr-1 text-sm font-medium sm:text-base')}>
             {englishName}
           </span>
-          <span className={clsx('text-xs text-neutral-400 sm:text-sm')}>
+          <span className={cn('text-xs text-neutral-400 sm:text-sm')}>
             {koreanName}
           </span>
         </p>
-        <p className={clsx('flex flex-row', 'text-sm text-neutral-400')}>
+        <p className={cn('flex flex-row text-sm text-neutral-400')}>
           <span>{department}</span>
         </p>
       </div>
