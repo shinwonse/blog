@@ -3,7 +3,7 @@ import clsx from 'clsx';
 export type BlockContent = {
   dateRange: string;
   department: string;
-  description: string;
+  description?: string;
   englishName: string;
   koreanName: string;
 };

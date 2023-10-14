@@ -6,7 +6,6 @@ const careers = [
   {
     dateRange: '2023.03 ~ NOW',
     department: '시스템개발본부 프론트엔드 개발팀',
-    description: '카카오엔터프라이즈에서 프론트엔드 개발자로 일하고 있습니다.',
     englishName: 'ktown4u',
     koreanName: '케이타운포유',
   },
@@ -14,11 +13,31 @@ const careers = [
 
 const activities = [
   {
+    dateRange: '2022.12 ~ 2023.02',
+    department: 'Frontend Developer',
+    englishName: 'Wanted FE PO Internship',
+    koreanName: '원티드 프리온보딩 인턴십',
+  },
+  {
     dateRange: '2021.08 ~ 2022.08',
     department: 'Frontend Developer',
-    description: '프론트엔드 개발자로 활동하였습니다.',
     englishName: 'WIT',
     koreanName: '연합 개발 동아리',
+  },
+];
+
+const educations = [
+  {
+    dateRange: '2017.03 ~ 2023.08',
+    department: '컴퓨터공학부',
+    englishName: 'Konkuk Univ',
+    koreanName: '건국대학교',
+  },
+  {
+    dateRange: '2012.03 ~ 2015.02',
+    department: '자율형사립고',
+    englishName: 'Shinil High School',
+    koreanName: '신일고등학교',
   },
 ];
 
@@ -39,6 +58,11 @@ function AboutPage() {
           className={clsx('mt-4')}
           data={activities}
           title="Activities"
+        />
+        <TimeLine
+          className={clsx('mt-4')}
+          data={educations}
+          title="Education"
         />
       </section>
     </main>
