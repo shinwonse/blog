@@ -41,7 +41,9 @@ function ProjectCard({
       </div>
       <div className={cn('flex flex-col gap-2 p-8')}>
         <div className={cn('flex flex-row items-center gap-2')}>
-          <h3 className={cn('text-xl font-bold')}>{title}</h3>
+          <h3 className={cn('break-keep text-sm font-bold sm:text-xl')}>
+            {title}
+          </h3>
           <div className={cn('flex flex-row gap-1')}>
             <Link href={githubUrl} target="_blank">
               <GitHubLogoIcon />
@@ -51,7 +53,7 @@ function ProjectCard({
             </Link>
           </div>
         </div>
-        <p className={cn('text-sm opacity-75')}>{description}</p>
+        <p className={cn('text-xs opacity-75 sm:text-sm')}>{description}</p>
       </div>
     </div>
   );

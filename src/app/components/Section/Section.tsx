@@ -1,7 +1,9 @@
+import type { ReactNode } from 'react';
+
 import { cn } from '@/utils/cn';
 
 interface SectionProps {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   layout?: 'flex' | 'grid';
   title?: string;
