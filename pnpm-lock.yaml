@@ -38,6 +38,9 @@ dependencies:
   notion-to-md:
     specifier: ^3.1.1
     version: 3.1.1(encoding@0.1.13)
+  plaiceholder:
+    specifier: ^3.0.0
+    version: 3.0.0(sharp@0.32.6)
   postcss:
     specifier: 8.4.29
     version: 8.4.29
@@ -10684,6 +10687,14 @@ packages:
     dependencies:
       find-up: 6.3.0
     dev: true
+
+  /plaiceholder@3.0.0(sharp@0.32.6):
+    resolution: {integrity: sha512-jwHxxHPnr1BwRzPCeZgEK2BMsEy2327sWynw3qb6XC/oGgGDUTPtR8pFxFQmNArhMBwhkUbUr5OPhhIJpCa8eQ==}
+    peerDependencies:
+      sharp: '>= 0.30.6'
+    dependencies:
+      sharp: 0.32.6
+    dev: false
 
   /pnp-webpack-plugin@1.7.0(typescript@5.2.2):
     resolution: {integrity: sha512-2Rb3vm+EXble/sMXNSu6eoBx8e79gKqhNq9F5ZWW6ERNCTE/Q0wQNne5541tE5vKjfM8hpNCYL+LGc1YTfI0dg==}
