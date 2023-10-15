@@ -18,6 +18,24 @@ const notion = new Client({
 
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
+const processBook = (result: any) => {
+  const { cover, createdTime, lastEditedTime, properties } = camelcaseKeys(
+    result,
+    {
+      deep: true,
+    }
+  );
+  const { author, name } = properties;
+  const { file } = cover;
+  return {
+    author: author.richText[0]?.plainText ?? '',
+    cover: file?.url ?? '',
+    createdTime: dayjs(createdTime),
+    lastEditedTime: dayjs(lastEditedTime),
+    title: name.title[0]?.plainText ?? '',
+  };
+};
+
 const processPost = (result: any) => {
   const { createdTime, lastEditedTime, properties } = camelcaseKeys(result, {
     deep: true,
@@ -53,6 +71,13 @@ export const getDatabase = async () => {
     database_id: 'bf942e3026c44977bf63cb0a28025d91',
   });
   return posts;
+};
+
+export const getBooks = async () => {
+  const response = await notion.databases.query({
+    database_id: '14d67f1da4654acbb38d37ff025b7542',
+  });
+  return response.results.map(processBook);
 };
 
 export const getProjects = async () => {
