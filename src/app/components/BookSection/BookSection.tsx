@@ -2,6 +2,8 @@ import BookCard from '@/app/components/BookCard';
 import { getBooks } from '@/services/notion';
 import { cn } from '@/utils/cn';
 
+export const revalidate = 3000;
+
 async function BookSection() {
   const books = await Promise.resolve(getBooks());
 
