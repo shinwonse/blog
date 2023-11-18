@@ -1,7 +1,6 @@
 import { Client } from '@notionhq/client';
 import camelcaseKeys from 'camelcase-keys';
 import dayjs from 'dayjs';
-import { notFound } from 'next/navigation';
 import { NotionToMarkdown } from 'notion-to-md';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
@@ -23,7 +22,7 @@ const processBook = (result: any) => {
     result,
     {
       deep: true,
-    }
+    },
   );
   const { author, name } = properties;
   const { file } = cover;
@@ -100,14 +99,10 @@ export const getPost = async (slug: string) => {
     filter: { and: [{ property: 'slug', rich_text: { equals: `/${slug}` } }] },
   });
   const [response] = results;
-  if (!response) {
-    notFound();
-  }
+
   const mdBlocks = await n2m.pageToMarkdown(response.id ?? '');
   const mdString = n2m.toMarkdownString(mdBlocks);
-  if (!mdString.parent) {
-    throw new Error('Empty content');
-  }
+
   const { value } = await remark()
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
