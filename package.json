@@ -11,9 +11,6 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
-  "engines": {
-    "node": "~20.9.0"
-  },
   "dependencies": {
     "@notionhq/client": "^2.2.13",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
