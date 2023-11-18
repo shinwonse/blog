@@ -5,7 +5,7 @@ const careers = [
   {
     dateRange: '2023.03 ~ NOW',
     department: '시스템개발본부 프론트엔드 개발팀',
-    englishName: 'ktown4u',
+    englishName: 'Ktown4u',
     koreanName: '케이타운포유',
   },
 ];
@@ -43,13 +43,13 @@ const educations = [
 function AboutPage() {
   return (
     <main>
-      <section className={cn('flex flex-col py-12')}>
+      <section className={cn('flex flex-col items-center py-12')}>
         <h1 className={cn('mb-1 text-base sm:text-3xl')}>
           안녕하세요! <span className={cn('font-bold')}>개발자 신원세</span>
           입니다.
         </h1>
         <p className={cn('text-sm sm:text-base')}>
-          현재 ktown4u에서 글로벌 팬과 K-POP을 연결하고 있습니다.
+          현재 Ktown4u에서 글로벌 팬과 K-POP을 연결하고 있습니다.
         </p>
       </section>
       <section className={cn('flex flex-col gap-12')}>
