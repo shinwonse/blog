@@ -2,7 +2,6 @@ import '../styles/globals.css';
 
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import type { ReactNode } from 'react';
 
 import Footer from '@/app/components/Footer';
 import Header from '@/app/components/Header';
@@ -34,7 +33,11 @@ export const metadata: Metadata = {
   title: '개발자 신원세',
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="ko" suppressHydrationWarning>
       <body className={cn(GmarketSans.className)}>
