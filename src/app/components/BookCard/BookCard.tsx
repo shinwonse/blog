@@ -14,7 +14,7 @@ function BookCard({ author, className, thumbnail, title }: BookCardProps) {
     <div
       className={cn(
         'flex flex-col gap-2 rounded-xl bg-neutral-50 shadow-xl hover:scale-[1.01] dark:bg-neutral-800',
-        className,
+        className
       )}
     >
       <div className={cn('relative aspect-square')}>
