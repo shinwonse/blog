@@ -9,8 +9,8 @@ export default function Home() {
     <main className={cn('mt-4 flex w-full flex-col items-center gap-12')}>
       <IntroductionSection />
       <RecentPostSection />
-      <BookSection />
       <ProjectSection />
+      <BookSection />
     </main>
   );
 }
