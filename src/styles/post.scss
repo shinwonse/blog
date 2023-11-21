@@ -1,10 +1,8 @@
 #post {
   p,
+  h1,
   h2,
   h3,
-  h4,
-  h5,
-  h6,
   li,
   th,
   td {
@@ -37,7 +35,7 @@
     }
   }
   h1 {
-    @apply pb-2 pt-8 text-4xl leading-10;
+    @apply pb-2 pt-10 text-5xl leading-10;
   }
 
   h2 {
@@ -46,10 +44,6 @@
 
   h3 {
     @apply pb-2 pt-6 text-3xl leading-10;
-  }
-
-  h4 {
-    @apply pb-1 pt-4 text-2xl leading-10;
   }
 
   pre {
@@ -94,6 +88,12 @@
     @apply rounded-lg;
   }
 
+  ol {
+    li {
+
+    }
+  }
+
   ul {
     @apply py-4;
     li {
@@ -116,7 +116,7 @@
   }
 
   blockquote {
-    @apply border-l-4 border-stone-600 pl-4 py-1 my-2;
+    @apply border-4 rounded-lg bg-neutral-800 border-neutral-800 pl-4 py-1 my-2;
     p {
       @apply text-stone-400 p-0;
     }
