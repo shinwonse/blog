@@ -19,7 +19,7 @@ const notion = new Client({
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
 const processBook = (result: any) => {
-  const { cover, createdTime, lastEditedTime, properties } = camelcaseKeys(
+  const { cover, createdTime, id, lastEditedTime, properties } = camelcaseKeys(
     result,
     {
       deep: true,
@@ -27,9 +27,11 @@ const processBook = (result: any) => {
   );
   const { author, name } = properties;
   const { file } = cover;
+  const encodedURI = encodeURIComponent(file.url.split('?')[0]);
+  const imageURI = `https://shinwonse.notion.site/image/${encodedURI}?table=block&id=${id}&cache=v2`;
   return {
     author: author.richText[0]?.plainText ?? '',
-    cover: file?.url ?? '',
+    cover: imageURI ?? '',
     createdTime: dayjs(createdTime),
     lastEditedTime: dayjs(lastEditedTime),
     title: name.title[0]?.plainText ?? '',
