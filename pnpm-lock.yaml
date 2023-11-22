@@ -8,6 +8,9 @@ dependencies:
   '@notionhq/client':
     specifier: ^2.2.13
     version: 2.2.13(encoding@0.1.13)
+  '@plaiceholder/next':
+    specifier: ^3.0.0
+    version: 3.0.0(next@14.0.3)(plaiceholder@3.0.0)(sharp@0.32.6)
   '@radix-ui/react-dropdown-menu':
     specifier: ^2.0.6
     version: 2.0.6(@types/react-dom@18.2.7)(@types/react@18.2.21)(react-dom@18.2.0)(react@18.2.0)
@@ -2180,6 +2183,18 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@plaiceholder/next@3.0.0(next@14.0.3)(plaiceholder@3.0.0)(sharp@0.32.6):
+    resolution: {integrity: sha512-7UK/H1X64hwo2VaxOPKMXE+OY9IgmKLPsq/xKHZ+gU07oqQSfIWWIgpVVucMB3ZgVYah+68agR15BRuSxAuMHw==}
+    peerDependencies:
+      next: '>= 10.0.0'
+      plaiceholder: '>=3.0.0'
+      sharp: '>= 0.30.6'
+    dependencies:
+      next: 14.0.3(@babel/core@7.23.3)(react-dom@18.2.0)(react@18.2.0)(sass@1.69.5)
+      plaiceholder: 3.0.0(sharp@0.32.6)
+      sharp: 0.32.6
+    dev: false
 
   /@pmmmwh/react-refresh-webpack-plugin@0.5.11(react-refresh@0.11.0)(webpack@5.89.0):
     resolution: {integrity: sha512-7j/6vdTym0+qZ6u4XbSAxrWBGYSdCfTzySkj7WAFgDLmSyWlOrWvpyzxlFh5jtw9dn0oL/jtW+06XfFiisN3JQ==}
