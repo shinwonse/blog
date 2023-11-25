@@ -1,5 +1,5 @@
 import ProjectCard from '@/app/components/ProjectCard';
-import { getProjects } from '@/services/notion';
+import { getProjects } from '@/services/project';
 import { cn } from '@/utils/cn';
 
 async function ProjectSection() {

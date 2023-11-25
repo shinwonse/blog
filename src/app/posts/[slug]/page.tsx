@@ -1,4 +1,4 @@
-import { getPost, getPosts } from '@/services/notion';
+import { getPost, getPosts } from '@/services/post';
 
 interface Props {
   params: { slug: string };

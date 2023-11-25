@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import Card from '@/app/components/Card';
 import Section from '@/app/components/Section';
-import { getPosts } from '@/services/notion';
+import { getPosts } from '@/services/post';
 import { cn } from '@/utils/cn';
 
 async function RecentPostSection() {
