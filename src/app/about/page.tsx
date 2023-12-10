@@ -45,7 +45,8 @@ function AboutPage() {
     <main>
       <section className={cn('flex flex-col items-center py-12')}>
         <h1 className={cn('mb-1 text-base sm:text-3xl')}>
-          안녕하세요! <span className={cn('font-bold')}>개발자 신원세</span>
+          안녕하세요!{' '}
+          <span className={cn('font-bold')}>프론트엔드 개발자 신원세</span>
           입니다.
         </h1>
         <p className={cn('text-sm sm:text-base')}>
