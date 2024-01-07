@@ -1,3 +1,5 @@
+import type { Metadata } from 'next';
+
 import Chip from '@/app/components/Chip';
 import { getPost, getPosts } from '@/services/post';
 import { cn } from '@/utils/cn';
@@ -12,11 +14,17 @@ interface Props {
   params: { slug: string };
 }
 
-export async function generateMetadata({ params: { slug } }: Props) {
-  const { description, title } = await Promise.resolve(getPost(slug));
+export async function generateMetadata({
+  params: { slug },
+}: Props): Promise<Metadata> {
+  const { description, lastEditedTime, title } = await Promise.resolve(
+    getPost(slug)
+  );
   return {
     openGraph: {
+      authors: 'Wonse Shin',
       description,
+      publishedTime: lastEditedTime.format('YYYY-MM-DD'),
       title,
     },
     title,
