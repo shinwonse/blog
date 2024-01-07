@@ -17,7 +17,7 @@ const processPost = (result: any) => {
   });
   const { category, description, slug, title } = properties;
   return {
-    category: category.multi_select,
+    category: category.multiSelect,
     createdTime: dayjs(createdTime),
     description: description.richText[0]?.plainText ?? null,
     lastEditedTime: dayjs(lastEditedTime),
