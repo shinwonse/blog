@@ -12,6 +12,17 @@ interface Props {
   params: { slug: string };
 }
 
+export async function generateMetadata({ params: { slug } }: Props) {
+  const { description, title } = await Promise.resolve(getPost(slug));
+  return {
+    openGraph: {
+      description,
+      title,
+    },
+    title,
+  };
+}
+
 export async function generateStaticParams() {
   return (await getPosts()).map(({ slug }) => ({ slug }));
 }
