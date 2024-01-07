@@ -30,6 +30,12 @@ const GmarketSans = localFont({
 
 export const metadata: Metadata = {
   description: '안녕하세요. 프론트엔드 개발자 신원세입니다.',
+  openGraph: {
+    description: '안녕하세요. 프론트엔드 개발자 신원세입니다.',
+    title: '개발자 신원세',
+    type: 'website',
+    url: 'https://wonse.dev',
+  },
   title: '개발자 신원세',
 };
 
