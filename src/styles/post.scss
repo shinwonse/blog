@@ -127,7 +127,7 @@
   }
 
   a {
-    @apply text-cyan-500 hover:underline;
+    @apply text-cyan-500 hover:underline break-all;
   }
 
   code:not(.hljs) {
