@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { cn } from '@/utils/cn';
 
 const Thumbnails = {
+  담장NUMUGAS: '/numugas.jpeg',
   술로그: '/sullog.png',
 } as const;
 
@@ -35,12 +36,12 @@ function ProjectCard({
           alt={title}
           className={cn('rounded-t-xl')}
           fill
-          src={Thumbnails.술로그}
+          src={Thumbnails[title as keyof typeof Thumbnails]}
           style={{ objectFit: 'cover' }}
         />
       </div>
-      <div className={cn('flex flex-col gap-2 p-8')}>
-        <div className={cn('flex flex-row items-center gap-2')}>
+      <div className={cn('flex flex-col gap-3 p-6')}>
+        <div className={cn('flex flex-col items-start gap-2')}>
           <h3 className={cn('break-keep text-sm font-bold sm:text-xl')}>
             {title}
           </h3>

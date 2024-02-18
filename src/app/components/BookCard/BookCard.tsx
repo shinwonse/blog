@@ -27,7 +27,7 @@ function BookCard({ author, className, thumbnail, title }: BookCardProps) {
           unoptimized
         />
       </div>
-      <div className={cn('flex flex-col gap-2 p-4 sm:p-8')}>
+      <div className={cn('flex flex-col gap-2 p-4 sm:p-6')}>
         <div className={cn('flex flex-row items-center gap-2')}>
           <h3 className={cn('break-keep text-sm font-bold sm:text-xl')}>
             {title}
