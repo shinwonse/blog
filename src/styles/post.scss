@@ -26,9 +26,9 @@
   }
 
   p {
-    @apply text-base font-normal leading-9 tracking-wide py-4;
+    @apply text-base font-normal leading-7 tracking-wide py-4;
     @media screen(sm) {
-      @apply text-lg;
+      @apply text-lg leading-9;
     }
     strong {
       @apply font-semibold;
@@ -128,6 +128,6 @@
   }
 
   code:not(.hljs) {
-    @apply mx-1 rounded-md bg-stone-700 px-1 py-1 text-base font-medium text-stone-200;
+    @apply mx-1 rounded-md bg-stone-700 px-1 py-0.5 text-base font-medium text-stone-200;
   }
 }
