@@ -26,9 +26,9 @@
   }
 
   p {
-    @apply text-[20px] font-thin leading-9 tracking-wide py-4;
+    @apply text-base font-normal leading-9 tracking-wide py-4;
     @media screen(sm) {
-      @apply text-[22px];
+      @apply text-lg;
     }
     strong {
       @apply font-semibold;
@@ -88,19 +88,16 @@
     @apply rounded-lg;
   }
 
-  ol {
-    li {
-
-    }
-  }
-
   ul {
-    @apply py-4;
+    @apply py-4 leading-9;
     li {
-      @apply pb-1 font-light text-lg;
+      @apply pb-1 font-normal text-base leading-9;
+      @media screen(sm) {
+        @apply text-lg leading-9;
+      }
       &.task-list-item:has(p) {
         p {
-          @apply flex items-center m-0 py-1 font-light text-lg;
+          @apply flex items-center m-0 py-1 font-normal;
         }
       }
       &.task-list-item:not(:has(p)) {
@@ -131,6 +128,6 @@
   }
 
   code:not(.hljs) {
-    @apply mx-1 rounded-md bg-stone-700 px-2 py-1 text-lg font-medium text-stone-200;
+    @apply mx-1 rounded-md bg-stone-700 px-1 py-1 text-base font-medium text-stone-200;
   }
 }
