@@ -10,6 +10,7 @@ import remarkRehype from 'remark-rehype';
 
 import { BLOG_DATABASE_ID } from '@/constants/notion';
 import { n2m, notion } from '@/services/notion';
+import { rehypeImage } from '@/utils/rehypeImage';
 
 const processPost = (result: any) => {
   const { createdTime, lastEditedTime, properties } = camelcaseKeys(result, {
@@ -31,7 +32,7 @@ export const getPost = async (slug: string) => {
     database_id: BLOG_DATABASE_ID,
     filter: { and: [{ property: 'slug', rich_text: { equals: `/${slug}` } }] },
   });
-  const [response] = results;
+  const [response, id] = results;
   if (!response) {
     notFound();
   }
@@ -43,6 +44,7 @@ export const getPost = async (slug: string) => {
   const { value } = await remark()
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
+    .use(() => rehypeImage(response.id ?? ''))
     .use(rehypeHighlight)
     .use(rehypeRaw)
     .use(rehypeStringify)
