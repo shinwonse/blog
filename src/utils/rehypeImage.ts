@@ -15,7 +15,6 @@ const processImageNode = async (node: Element, id: string) => {
   }
   const encodedURI = encodeURIComponent(src.split('?')[0]);
   const imageUrl = `https://shinwonse.notion.site/image/${encodedURI}?table=block&id=${id}&cache=v2`;
-  console.log(imageUrl);
 };
 
 export const rehypeImage =
