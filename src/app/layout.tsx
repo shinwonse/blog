@@ -1,6 +1,7 @@
 import '@/styles/global.css';
 
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import type { ReactNode } from 'react';
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ko" suppressHydrationWarning>
       <body className={cn(GmarketSans.className)}>
+        <SpeedInsights />
         <Analytics />
         <ThemeProvider>
           <div
