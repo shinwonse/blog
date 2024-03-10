@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { cn } from '@/utils/cn';
 
 const Thumbnails = {
+  개발자신원세: '/blog.png',
   담장NUMUGAS: '/numugas.jpeg',
   술로그: '/sullog.png',
 } as const;
@@ -36,7 +37,7 @@ function ProjectCard({
           alt={title}
           className={cn('rounded-t-xl')}
           fill
-          src={Thumbnails[title as keyof typeof Thumbnails]}
+          src={Thumbnails[title.replaceAll(' ', '') as keyof typeof Thumbnails]}
           style={{ objectFit: 'cover' }}
         />
       </div>
