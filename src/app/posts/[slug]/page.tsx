@@ -18,7 +18,7 @@ export async function generateMetadata({
   params: { slug },
 }: Props): Promise<Metadata> {
   const { description, lastEditedTime, title } = await Promise.resolve(
-    getPost(slug)
+    getPost(slug),
   );
   return {
     openGraph: {

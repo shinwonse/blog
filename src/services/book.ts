@@ -8,7 +8,7 @@ const processBook = (result: any) => {
     result,
     {
       deep: true,
-    }
+    },
   );
   const { author, name } = properties;
   const { file } = cover;

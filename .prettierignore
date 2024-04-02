@@ -1,0 +1,8 @@
+node_modules
+/build
+/package
+.env.*
+
+pnpm-lock.yaml
+pnpm-workspace.yaml
+package-lock.json
