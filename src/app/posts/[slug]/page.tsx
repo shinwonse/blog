@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Chip from '@/app/components/Chip';
 import { getPost, getPosts } from '@/services/post';
 import { cn } from '@/utils/cn';
+import { extractCoverImageInfo } from '@/utils/extractCoverImageInfo';
 
 type Category = {
   color: string;
@@ -17,13 +18,15 @@ interface Props {
 export async function generateMetadata({
   params: { slug },
 }: Props): Promise<Metadata> {
-  const { description, lastEditedTime, title } = await Promise.resolve(
+  const { content, description, lastEditedTime, title } = await Promise.resolve(
     getPost(slug),
   );
+  const { alt = '', src = '' } = extractCoverImageInfo(content);
   return {
     openGraph: {
       authors: 'Wonse Shin',
       description,
+      images: [{ alt, url: src }],
       publishedTime: lastEditedTime.format('YYYY-MM-DD'),
       title,
     },

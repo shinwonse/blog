@@ -5,7 +5,6 @@ export const runtime = 'edge';
 
 export async function GET(request: NextRequest) {
   const title = request.nextUrl.searchParams.get('title');
-  console.log('title', title);
 
   return new ImageResponse(
     (
