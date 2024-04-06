@@ -9,8 +9,8 @@ export function extractCoverImageInfo(html: string): {
 
   if (imgElement) {
     return {
-      alt: imgElement.getAttribute('alt'),
-      src: imgElement.getAttribute('src'),
+      alt: imgElement.getAttribute('alt') ?? '',
+      src: imgElement.getAttribute('src') ?? '',
     };
   }
 
