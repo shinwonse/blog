@@ -32,6 +32,9 @@ dependencies:
   camelcase-keys:
     specifier: ^9.1.3
     version: 9.1.3
+  class-variance-authority:
+    specifier: ^0.7.0
+    version: 0.7.0
   clsx:
     specifier: ^2.1.0
     version: 2.1.0
@@ -41,6 +44,9 @@ dependencies:
   jsdom:
     specifier: ^24.0.0
     version: 24.0.0
+  lucide-react:
+    specifier: ^0.368.0
+    version: 0.368.0(react@18.2.0)
   next:
     specifier: 14.2.0
     version: 14.2.0(@babel/core@7.24.3)(react-dom@18.2.0)(react@18.2.0)(sass@1.72.0)
@@ -95,6 +101,9 @@ dependencies:
   tailwind-merge:
     specifier: ^2.2.2
     version: 2.2.2
+  tailwindcss-animate:
+    specifier: ^1.0.7
+    version: 1.0.7(tailwindcss@3.4.3)
   unified:
     specifier: ^11.0.4
     version: 11.0.4
@@ -6042,6 +6051,12 @@ packages:
     resolution: {integrity: sha512-0TNiGstbQmCFwt4akjjBg5pLRTSyj/PkWQ1ZoO2zntmg9yLqSRxwEa4iCfQLGjqhiqBfOJa7W/E8wfGrTDmlZQ==}
     dev: true
 
+  /class-variance-authority@0.7.0:
+    resolution: {integrity: sha512-jFI8IQw4hczaL4ALINxqLEXQbWcNjoSkloa4IaufXCJr6QawJyw7tuRysRsrE8w2p/4gGaxKIt/hX3qz/IbD1A==}
+    dependencies:
+      clsx: 2.0.0
+    dev: false
+
   /clean-css@5.3.3:
     resolution: {integrity: sha512-D5J+kHaVb/wKSFcyyV75uCn8fiY4sV38XJoe4CUyGQ+mOU/fMVYUdH1hJC+CJQ5uY3EnW27SbJYS4X8BiLrAFg==}
     engines: {node: '>= 10.0'}
@@ -6091,6 +6106,11 @@ packages:
     resolution: {integrity: sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==}
     engines: {node: '>=0.8'}
     dev: true
+
+  /clsx@2.0.0:
+    resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
+    engines: {node: '>=6'}
+    dev: false
 
   /clsx@2.1.0:
     resolution: {integrity: sha512-m3iNNWpd9rl3jvvcBnu70ylMdrXt8Vlq4HYadnU5fwcOtvkSQWPmj7amUcDT2qYI7risszBjI5AUIUox9D16pg==}
@@ -9482,6 +9502,14 @@ packages:
     dependencies:
       yallist: 4.0.0
 
+  /lucide-react@0.368.0(react@18.2.0):
+    resolution: {integrity: sha512-soryVrCjheZs8rbXKdINw9B8iPi5OajBJZMJ1HORig89ljcOcEokKKAgGbg3QWxSXel7JwHOfDFUdDHAKyUAMw==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /lz-string@1.5.0:
     resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
     hasBin: true
@@ -12366,6 +12394,14 @@ packages:
     resolution: {integrity: sha512-tWANXsnmJzgw6mQ07nE3aCDkCK4QdT3ThPMCzawoYA2Pws7vSTCvz3Vrjg61jVUGfFZPJzxEP+NimbcW+EdaDw==}
     dependencies:
       '@babel/runtime': 7.24.1
+    dev: false
+
+  /tailwindcss-animate@1.0.7(tailwindcss@3.4.3):
+    resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || insiders'
+    dependencies:
+      tailwindcss: 3.4.3
     dev: false
 
   /tailwindcss@3.4.3:
