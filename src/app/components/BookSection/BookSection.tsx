@@ -2,8 +2,6 @@ import BookCard from '@/app/components/BookCard';
 import { getBooks } from '@/services/book';
 import { cn } from '@/utils/cn';
 
-export const revalidate = 60;
-
 async function BookSection() {
   const books = await Promise.resolve(getBooks());
 

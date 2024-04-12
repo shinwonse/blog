@@ -11,9 +11,9 @@ type Category = {
   name: string;
 };
 
-interface Props {
+type Props = {
   params: { slug: string };
-}
+};
 
 export async function generateMetadata({
   params: { slug },
