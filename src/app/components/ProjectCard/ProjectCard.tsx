@@ -28,7 +28,7 @@ function ProjectCard({
   return (
     <div
       className={cn(
-        'flex flex-col gap-2 rounded-xl bg-neutral-50 shadow-xl hover:scale-[1.01] dark:bg-neutral-800',
+        'flex min-h-full flex-col gap-2 rounded-xl bg-neutral-50 shadow-xl hover:scale-[1.01] dark:bg-neutral-800',
         className,
       )}
     >
