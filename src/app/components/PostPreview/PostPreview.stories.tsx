@@ -9,4 +9,10 @@ const meta: Meta<typeof PostPreview> = {
 export default meta;
 type Story = StoryObj<typeof PostPreview>;
 
-export const Primary: Story = {};
+export const Primary: Story = {
+  args: {
+    author: 'John Doe',
+    coverImage: 'https://source.unsplash.com/random/100x100',
+    title: 'Hello, world!',
+  },
+};
