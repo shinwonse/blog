@@ -1,4 +1,5 @@
 @import 'post.scss';
+@import 'highlight.scss';
 
 @tailwind base;
 @tailwind components;
