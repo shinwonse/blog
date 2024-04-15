@@ -18,8 +18,10 @@ function PostPreview({ author, coverImage, title }: Props) {
         <AvatarImage alt="Random image" src={coverImage} />
         <AvatarFallback>👋</AvatarFallback>
       </Avatar>
-      <h3>{title}</h3>
-      <span className={cn('text-xs text-gray-400')}>{author}</span>
+      <div>
+        <h3>{title}</h3>
+        <span className={cn('text-xs text-gray-400')}>{author}</span>
+      </div>
     </AspectRatio>
   );
 }
