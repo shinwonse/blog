@@ -46,7 +46,7 @@ export const getPost = async (slug: string) => {
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeHighlight)
     .use(rehypeRaw)
-    .use(rehypeImage)
+    .use(() => rehypeImage)
     .use(rehypeStringify)
     .process(mdString.parent.trim());
   return {

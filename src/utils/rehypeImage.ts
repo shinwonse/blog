@@ -65,10 +65,8 @@ const processImageNode = async (node: Element, index: number) => {
     : '';
 };
 
-export const rehypeImage =
-  () =>
-  async ({ children }: { children: Element[] }) => {
-    const imageNodes: Element[] = [];
-    getImageNodes(children, imageNodes);
-    await Promise.all(imageNodes.map(processImageNode));
-  };
+export const rehypeImage = async ({ children }: { children: Element[] }) => {
+  const imageNodes: Element[] = [];
+  getImageNodes(children, imageNodes);
+  await Promise.all(imageNodes.map(processImageNode));
+};
