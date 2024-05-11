@@ -23,11 +23,9 @@ const processImageNode = async (node: Element, index: number) => {
   if (typeof src !== 'string') {
     return;
   }
-  /* 원본 이미지 가져오기 */
   const response = await fetch(src);
   const originImage = await response.arrayBuffer();
 
-  /* 이미지 최적화 */
   const image = sharp(originImage)
     .resize({ width: SIZE * 2 })
     .webp({ effort: 6 });
@@ -44,7 +42,6 @@ const processImageNode = async (node: Element, index: number) => {
   const url = urlWithQuery.host + urlWithQuery.pathname;
   const hashedURL = uuidv5(url, uuidv5.URL);
 
-  /* 이미지 업로드 */
   await supabase.storage
     .from('post')
     .upload(`${hashedURL}.webp`, buffer, { cacheControl: '31536000' });
@@ -52,7 +49,6 @@ const processImageNode = async (node: Element, index: number) => {
     data: { publicUrl: publicURL },
   } = supabase.storage.from('post').getPublicUrl(`${hashedURL}.webp`);
 
-  /* node 속성 설정 */
   if (!node.properties) {
     node.properties = {};
   }

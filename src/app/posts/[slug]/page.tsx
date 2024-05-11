@@ -23,6 +23,11 @@ export async function generateMetadata({
   );
   const { alt = '', src = '' } = extractCoverImageInfo(content);
   return {
+    authors: {
+      name: 'Wonse Shin',
+      url: 'https://github.com/shinwonse',
+    },
+    description,
     openGraph: {
       authors: 'Wonse Shin',
       description,
