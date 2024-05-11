@@ -2,6 +2,7 @@ pre code.hljs {
   display: block;
   padding: 1em;
   overflow-x: auto;
+  @apply text-base
 }
 
 .hljs {
