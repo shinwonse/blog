@@ -128,6 +128,6 @@
   }
 
   code:not(.hljs) {
-    @apply mx-1 rounded-md bg-stone-700 px-1 py-0.5 text-base font-medium text-stone-200;
+    @apply mx-1 rounded-md bg-stone-700 px-1 py-0.5 text-sm font-medium text-stone-200;
   }
 }
