@@ -2,7 +2,7 @@ import {
   Carousel as ShadcnCarousel,
   CarouselContent,
   CarouselItem,
-} from '@/components/ui/carousel';
+} from '@/components/ui/Carousel/Carousel';
 import { cn } from '@/utils/cn';
 
 type Props = {
