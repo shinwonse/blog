@@ -1,5 +1,9 @@
-import { AspectRatio } from '@/components/ui/aspect-ratio';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { AspectRatio } from '@/components/ui/AspectRatio/AspectRatio';
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from '@/components/ui/Avatar/Avatar';
 import { cn } from '@/utils/cn';
 
 type Props = {
