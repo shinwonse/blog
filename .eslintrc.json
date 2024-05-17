@@ -8,5 +8,17 @@
     "tailwindcss": {
       "callees": ["cn"]
     }
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/components/ui/**/*.tsx"],
+      "rules": {
+        "@typescript-eslint/no-shadow": "off",
+        "react/prop-types": [2, { "ignore": ["className", "size", "variant"] }],
+        "react-refresh/only-export-components": "off",
+        "react/jsx-no-constructed-context-values": "off",
+        "consistent-return": "off"
+      }
+    }
+  ]
 }
