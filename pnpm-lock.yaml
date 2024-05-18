@@ -154,6 +154,9 @@ importers:
       '@storybook/addon-styling':
         specifier: ^1.3.7
         version: 1.3.7(@types/react-dom@18.2.23)(@types/react@18.2.73)(encoding@0.1.13)(less@4.2.0)(postcss@8.4.38)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.72.0)(typescript@5.4.5)(webpack@5.91.0(esbuild@0.20.2))
+      '@storybook/addon-themes':
+        specifier: ^8.1.1
+        version: 8.1.1
       '@storybook/blocks':
         specifier: ^8.1.1
         version: 8.1.1(@types/react-dom@18.2.23)(@types/react@18.2.73)(encoding@0.1.13)(prettier@3.2.5)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -2096,6 +2099,9 @@ packages:
         optional: true
       webpack:
         optional: true
+
+  '@storybook/addon-themes@8.1.1':
+    resolution: {integrity: sha512-aOaPdkxJdYkT0xKxHN+cM7FWpSSgkUjhUNC/n32KYMpNKgZbp0UaP2VJbdHTIhh4Pzu4DSJL9zrVAQdhFHc6Kg==}
 
   '@storybook/addon-toolbars@8.1.1':
     resolution: {integrity: sha512-KY6fffSr2mE91CZAp1xtVM2Bcxo/dpA+R8RRt/9kei+6NucaIqpeqa1YTooTD8bUttq1yb/34kMSRgX/W3Qbfg==}
@@ -9133,6 +9139,10 @@ snapshots:
       - sass-embedded
       - supports-color
       - typescript
+
+  '@storybook/addon-themes@8.1.1':
+    dependencies:
+      ts-dedent: 2.2.0
 
   '@storybook/addon-toolbars@8.1.1': {}
 
