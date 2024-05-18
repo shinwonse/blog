@@ -10,6 +10,7 @@ const config: Config = {
   darkMode: ['class'],
   plugins: [tailwindcssAnimate],
   prefix: '',
+  safelist: ['dark'],
   theme: {
     container: {
       center: true,
