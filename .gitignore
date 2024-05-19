@@ -37,4 +37,6 @@ next-env.d.ts
 
 # IDE
 /.idea
-```
+
+# Chromatic
+build-storybook.log

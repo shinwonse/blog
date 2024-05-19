@@ -1,6 +1,6 @@
 import type { StorybookConfig } from '@storybook/nextjs';
 
-import {TsconfigPathsPlugin} from "tsconfig-paths-webpack-plugin";
+import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -35,7 +35,7 @@ const config: StorybookConfig = {
 
   typescript: {
     reactDocgen: 'react-docgen-typescript'
-  }
+  },
 };
 
 export default config;
