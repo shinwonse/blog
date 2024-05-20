@@ -1,7 +1,8 @@
 import Link from 'next/link';
 
-import ThemeChanger from '@/app/components/ThemeChanger';
 import { cn } from '@/utils/cn';
+
+import { ModeToggle } from '../ModeToggle/ModeToggle';
 
 function Header() {
   return (
@@ -11,7 +12,7 @@ function Header() {
       <Link href="/">처음으로</Link>
       <div className={cn('flex flex-row items-center gap-8')}>
         <Link href="/about">소개</Link>
-        <ThemeChanger />
+        <ModeToggle />
       </div>
     </header>
   );

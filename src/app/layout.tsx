@@ -8,7 +8,7 @@ import type { ReactNode } from 'react';
 
 import Footer from '@/app/components/Footer';
 import Header from '@/app/components/Header';
-import ThemeProvider from '@/app/components/ThemeProvider';
+import { ThemeProvider } from '@/components/theme-provider';
 import { cn } from '@/utils/cn';
 
 const GmarketSans = localFont({
@@ -48,7 +48,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className={cn(GmarketSans.className)}>
         <SpeedInsights />
         <Analytics />
-        <ThemeProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          disableTransitionOnChange
+          enableSystem
+        >
           <div
             className={cn(
               'mx-auto flex max-w-3xl flex-col justify-center p-6 pb-0',
