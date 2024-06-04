@@ -9,9 +9,10 @@ function Header() {
     <header
       className={cn('flex flex-row items-center justify-between font-bold')}
     >
-      <Link href="/">처음으로</Link>
+      <Link href="/">Home</Link>
       <div className={cn('flex flex-row items-center gap-8')}>
-        <Link href="/about">소개</Link>
+        <Link href="/posts">Posts</Link>
+        <Link href="/about">About</Link>
         <ModeToggle />
       </div>
     </header>
