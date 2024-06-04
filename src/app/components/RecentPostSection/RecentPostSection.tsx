@@ -5,7 +5,7 @@ import { getPosts } from '@/services/post';
 import { cn } from '@/utils/cn';
 
 async function RecentPostSection() {
-  const posts = await Promise.resolve(getPosts());
+  const posts = (await getPosts()).slice(0, 3);
 
   return (
     <section className={cn('flex w-full flex-col gap-4 px-6')}>
