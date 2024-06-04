@@ -55,9 +55,32 @@ export const getPost = async (slug: string) => {
   };
 };
 
-export const getPosts = async () => {
+/**
+ * Get all posts from the Notion database
+ */
+export const getAllPosts = async () => {
   const response = await notion.databases.query({
     database_id: BLOG_DATABASE_ID,
   });
   return response.results.map(processPost);
+};
+
+const PAGE_SIZE = 5;
+
+/**
+ * Get all posts from the Notion database with pagination
+ */
+export const getPaginatedPosts = async (startCursor = undefined) => {
+  const response = await notion.databases.query({
+    database_id: BLOG_DATABASE_ID,
+    page_size: PAGE_SIZE,
+    start_cursor: startCursor,
+  });
+
+  const posts = response.results.map(processPost);
+
+  return {
+    nextCursor: response.has_more ? response.next_cursor : null,
+    posts,
+  };
 };
