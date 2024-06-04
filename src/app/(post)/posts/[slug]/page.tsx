@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 import Chip from '@/app/components/Chip';
-import { getPost, getPosts } from '@/services/post';
+import { getAllPosts, getPost } from '@/services/post';
 import { cn } from '@/utils/cn';
 import { extractCoverImageInfo } from '@/utils/extractCoverImageInfo';
 
@@ -40,7 +40,7 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  return (await getPosts()).map(({ slug }) => ({ slug }));
+  return (await getAllPosts()).map(({ slug }) => ({ slug }));
 }
 
 async function Post({ params: { slug } }: Props) {
