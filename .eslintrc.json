@@ -1,8 +1,16 @@
 {
-  "extends": ["next/core-web-vitals", "@wonse/eslint-config", "plugin:tailwindcss/recommended"],
+  "extends": [
+    "next/core-web-vitals",
+    "@wonse/eslint-config",
+    "plugin:tailwindcss/recommended"
+  ],
   "rules": {
     "no-restricted-exports": "off",
-    "@typescript-eslint/consistent-type-imports": "error"
+    "@typescript-eslint/consistent-type-imports": "error",
+    "react/function-component-definition": [
+      2,
+      { "namedComponents": ["arrow-function", "function-declaration"] }
+    ]
   },
   "settings": {
     "tailwindcss": {
@@ -14,7 +22,20 @@
       "files": ["**/components/ui/**/*.tsx"],
       "rules": {
         "@typescript-eslint/no-shadow": "off",
-        "react/prop-types": [2, { "ignore": ["className", "size", "variant", "sideOffset", "checked", "decorative", "orientation"] }],
+        "react/prop-types": [
+          2,
+          {
+            "ignore": [
+              "className",
+              "size",
+              "variant",
+              "sideOffset",
+              "checked",
+              "decorative",
+              "orientation"
+            ]
+          }
+        ],
         "react-refresh/only-export-components": "off",
         "react/jsx-no-constructed-context-values": "off",
         "consistent-return": "off",
