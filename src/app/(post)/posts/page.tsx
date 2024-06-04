@@ -1,12 +1,6 @@
 import Link from 'next/link';
 
 import Card from '@/app/components/Card';
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-} from '@/components/ui/pagination';
 import { getPaginatedPosts } from '@/services/post';
 import { cn } from '@/utils/cn';
 
@@ -25,20 +19,6 @@ const Posts = async () => {
           </li>
         ))}
       </ul>
-      <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationLink href="#" size="icon">
-              Previous
-            </PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#" size="icon">
-              Next
-            </PaginationLink>
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
     </main>
   );
 };
