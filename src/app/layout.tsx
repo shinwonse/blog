@@ -54,11 +54,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           disableTransitionOnChange
           enableSystem
         >
-          <div
-            className={cn(
-              'mx-auto flex max-w-3xl flex-col justify-center p-6 pb-0'
-            )}
-          >
+          <div className={cn('mx-auto flex max-w-3xl flex-col justify-center')}>
             <Header />
             {children}
             <Footer />

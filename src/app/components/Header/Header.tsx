@@ -7,7 +7,7 @@ import { ModeToggle } from '../ModeToggle/ModeToggle';
 function Header() {
   return (
     <header
-      className={cn('flex flex-row items-center justify-between font-bold')}
+      className={cn('flex flex-row items-center justify-between p-6 font-bold')}
     >
       <Link href="/">Home</Link>
       <div className={cn('flex flex-row items-center gap-8')}>
