@@ -1,11 +1,11 @@
 import Link from 'next/link';
 
 import Card from '@/app/components/Card';
-import { getPosts } from '@/services/post';
+import { getAllPosts } from '@/services/post';
 import { cn } from '@/utils/cn';
 
 async function RecentPostSection() {
-  const posts = (await getPosts()).slice(0, 3);
+  const posts = (await getAllPosts()).slice(0, 3);
 
   return (
     <section className={cn('flex w-full flex-col gap-4 px-6')}>
