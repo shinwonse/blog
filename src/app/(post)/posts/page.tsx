@@ -1,11 +1,17 @@
 import Link from 'next/link';
 
 import Card from '@/app/components/Card';
-import { getPosts } from '@/services/post';
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+} from '@/components/ui/pagination';
+import { getPaginatedPosts } from '@/services/post';
 import { cn } from '@/utils/cn';
 
 const Posts = async () => {
-  const posts = await getPosts();
+  const { posts } = await getPaginatedPosts();
 
   return (
     <main className={cn('flex w-full flex-col items-center px-6')}>
@@ -19,6 +25,20 @@ const Posts = async () => {
           </li>
         ))}
       </ul>
+      <Pagination>
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationLink href="#" size="icon">
+              Previous
+            </PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#" size="icon">
+              Next
+            </PaginationLink>
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
     </main>
   );
 };

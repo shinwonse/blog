@@ -65,7 +65,7 @@ export const getAllPosts = async () => {
   return response.results.map(processPost);
 };
 
-const PAGE_SIZE = 5;
+const PAGE_SIZE = 10;
 
 /**
  * Get all posts from the Notion database with pagination
