@@ -42,7 +42,7 @@ const educations = [
 
 function AboutPage() {
   return (
-    <main>
+    <main className={cn('px-6')}>
       <section className={cn('flex flex-col items-center py-12')}>
         <h1 className={cn('mb-1 text-base sm:text-3xl')}>
           안녕하세요!{' '}

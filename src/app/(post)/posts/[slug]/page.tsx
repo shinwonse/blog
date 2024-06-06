@@ -48,8 +48,8 @@ async function Post({ params: { slug } }: Props) {
     await Promise.resolve(getPost(slug));
 
   return (
-    <div>
-      <div className={cn('mb-4 flex w-full flex-col border-b py-2')}>
+    <main className={cn('mb-4 flex w-full flex-col px-6 py-2')}>
+      <div className={cn('mb-2 border-b')}>
         <div className={cn('mb-4 flex flex-row gap-1')}>
           {category.map((item: Category) => (
             <Chip key={item.id} color={item.color} label={item.name} />
@@ -62,7 +62,7 @@ async function Post({ params: { slug } }: Props) {
         </p>
       </div>
       <div dangerouslySetInnerHTML={{ __html: content }} id="post" />
-    </div>
+    </main>
   );
 }
 
