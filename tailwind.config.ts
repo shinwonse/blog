@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss';
 import tailwindcssAnimate from 'tailwindcss-animate';
+import tailwindcssContentVisibility from 'tailwindcss-content-visibility';
 
 const config: Config = {
   content: [
@@ -8,7 +9,7 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   darkMode: ['class'],
-  plugins: [tailwindcssAnimate],
+  plugins: [tailwindcssAnimate, tailwindcssContentVisibility],
   prefix: '',
   safelist: ['dark'],
   theme: {

@@ -7,7 +7,7 @@ async function ProjectSection() {
   const projects = await Promise.resolve(getProjects());
 
   return (
-    <section className={cn('size-full pl-6 sm:px-6')}>
+    <section className={cn('size-full pl-6 content-visibility-auto sm:px-6')}>
       <h2 className={cn('mb-4 w-full font-bold')}>사이드 프로젝트</h2>
       <Carousel
         items={projects.map((project) => (
