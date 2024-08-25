@@ -1,6 +1,6 @@
 {
   "plugins": ["@wonse"],
-  "extends": ["plugin:@wonse/auto", "plugin:tailwindcss/recommended"],
+  "extends": ["next/core-web-vitals", "plugin:@wonse/auto", "plugin:tailwindcss/recommended"],
   "rules": {
     "no-restricted-exports": "off",
     "@typescript-eslint/consistent-type-imports": "error",

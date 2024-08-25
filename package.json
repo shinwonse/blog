@@ -91,7 +91,7 @@
   },
   "optionalDependencies": {
     "@chromatic-com/storybook": "^1.4.0",
-    "@wonse/eslint-plugin": "^1.0.4",
+    "@wonse/eslint-plugin": "^1.0.6",
     "eslint-config-next": "^14.1.4",
     "eslint-plugin-tailwindcss": "^3.15.1"
   }
