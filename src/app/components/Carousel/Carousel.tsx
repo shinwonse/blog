@@ -15,10 +15,7 @@ function Carousel({ className, items }: Props) {
     <ShadcnCarousel className={cn(className)}>
       <CarouselContent className={cn('-ml-4')}>
         {items?.map((item) => (
-          <CarouselItem
-            key={item}
-            className={cn('basis-3/5 pl-4 sm:basis-1/3')}
-          >
+          <CarouselItem key={item} className={cn('basis-3/5 pl-4 sm:basis-1/3')}>
             {item}
           </CarouselItem>
         ))}
