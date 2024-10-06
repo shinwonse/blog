@@ -56,9 +56,7 @@ const processImageNode = async (node: Element, index: number) => {
   node.properties.loading = index ? 'lazy' : 'eager';
   node.properties.width = SIZE;
   node.properties.height = Math.round(height * (SIZE / width));
-  node.properties.style = index
-    ? `background: url('data:image/webp;base64,${placeholder}')`
-    : '';
+  node.properties.style = index ? `background: url('data:image/webp;base64,${placeholder}')` : '';
 };
 
 export const rehypeImage = async ({ children }: { children: Element[] }) => {
