@@ -11,17 +11,14 @@ type Category = {
   name: string;
 };
 
-type Props = {
-  params: { slug: string };
-};
+type Params = Promise<{ slug: string }>;
 
-export async function generateMetadata({
-  params: { slug },
-}: Props): Promise<Metadata> {
-  const { content, description, lastEditedTime, title } = await Promise.resolve(
-    getPost(slug),
-  );
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+  const { slug } = await params;
+
+  const { content, description, lastEditedTime, title } = await Promise.resolve(getPost(slug));
   const { alt = '', src = '' } = extractCoverImageInfo(content);
+
   return {
     authors: {
       name: 'Wonse Shin',
@@ -43,9 +40,12 @@ export async function generateStaticParams() {
   return (await getAllPosts()).map(({ slug }) => ({ slug }));
 }
 
-async function Post({ params: { slug } }: Props) {
-  const { category, content, description, lastEditedTime, title } =
-    await Promise.resolve(getPost(slug));
+async function Post({ params }: { params: Params }) {
+  const { slug } = await params;
+
+  const { category, content, description, lastEditedTime, title } = await Promise.resolve(
+    getPost(slug),
+  );
 
   return (
     <main className={cn('mb-4 flex w-full flex-col px-6 py-2')}>
@@ -57,9 +57,7 @@ async function Post({ params: { slug } }: Props) {
         </div>
         <h1 className={cn('mb-1 text-2xl')}>{title}</h1>
         <p className={cn('mb-4 text-neutral-400')}>{description}</p>
-        <p className={cn('text-neutral-400')}>
-          {lastEditedTime.format('YYYY-MM-DD')}
-        </p>
+        <p className={cn('text-neutral-400')}>{lastEditedTime.format('YYYY-MM-DD')}</p>
       </div>
       <div dangerouslySetInnerHTML={{ __html: content }} id="post" />
     </main>
