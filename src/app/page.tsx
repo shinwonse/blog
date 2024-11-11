@@ -10,7 +10,7 @@ export default function Home() {
       <IntroductionSection />
       <RecentPostSection />
       <ProjectSection />
-      <BookSection />
+      {/* <BookSection /> */}
     </main>
   );
 }
