@@ -130,4 +130,25 @@
   code:not(.hljs) {
     @apply mx-1 rounded-md bg-stone-700 px-1 py-0.5 text-sm font-medium text-stone-200;
   }
+
+  .bookmark-card {
+    @apply my-4 border rounded-lg overflow-hidden transition-all hover:shadow-md;
+
+    .bookmark-link {
+      @apply no-underline block p-4;
+    }
+
+    .bookmark-content {
+      @apply flex items-center gap-3;
+    }
+
+    .bookmark-icon {
+      @apply text-xl;
+    }
+
+    .bookmark-url {
+      @apply text-sm text-neutral-600 dark:text-neutral-400 
+             truncate hover:text-blue-500 dark:hover:text-blue-400;
+    }
+  }
 }

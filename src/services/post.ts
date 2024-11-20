@@ -10,7 +10,7 @@ import remarkRehype from 'remark-rehype';
 
 import { BLOG_DATABASE_ID } from '@/constants/notion';
 import { n2m, notion } from '@/services/notion';
-import { rehypeImage } from '@/utils/rehypeImage';
+import { rehypeBookmark } from '@/utils/rehypeBookmark';
 
 const processPost = (result: any) => {
   const { createdTime, lastEditedTime, properties } = camelcaseKeys(result, {
@@ -46,9 +46,10 @@ export const getPost = async (slug: string) => {
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeHighlight)
     .use(rehypeRaw)
-    .use(() => rehypeImage)
+    .use(rehypeBookmark as any)
     .use(rehypeStringify)
     .process(mdString.parent.trim());
+
   return {
     content: value.toString(),
     ...processPost(response),
