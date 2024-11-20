@@ -7,10 +7,8 @@ async function fetchMetadata(url: string) {
     const apiUrl = `${baseUrl}/api/bookmark?url=${encodeURIComponent(url)}`;
 
     const response = await fetch(apiUrl);
-    console.log('response', response);
     return await response.json();
   } catch (error) {
-    console.error('fetchMetadata error', error);
     return null;
   }
 }
