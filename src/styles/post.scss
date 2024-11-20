@@ -135,20 +135,40 @@
     @apply my-4 border rounded-lg overflow-hidden transition-all hover:shadow-md;
 
     .bookmark-link {
-      @apply no-underline block p-4;
+      @apply no-underline block;
     }
 
     .bookmark-content {
-      @apply flex items-center gap-3;
+      @apply flex items-start gap-4 p-4;
     }
 
-    .bookmark-icon {
-      @apply text-xl;
+    .bookmark-info {
+      @apply flex-1 min-w-0;
     }
 
-    .bookmark-url {
+    .bookmark-title {
+      @apply text-lg font-semibold mb-1 truncate;
+    }
+
+    .bookmark-description {
       @apply text-sm text-neutral-600 dark:text-neutral-400 
-             truncate hover:text-blue-500 dark:hover:text-blue-400;
+             line-clamp-2 mb-2;
+    }
+
+    .bookmark-domain {
+      @apply flex items-center gap-2 text-sm text-neutral-500;
+    }
+
+    .bookmark-favicon {
+      @apply w-4 h-4;
+    }
+
+    .bookmark-thumbnail {
+      @apply w-24 h-24 flex-shrink-0;
+    }
+
+    .bookmark-image {
+      @apply w-full h-full object-cover;
     }
   }
 }
