@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import Chip from '@/app/components/Chip';
+import TableOfContents from '@/app/components/TableOfContents';
 import { getAllPosts, getPost } from '@/services/post';
 import { cn } from '@/utils/cn';
 import { extractCoverImageInfo } from '@/utils/extractCoverImageInfo';
@@ -43,13 +44,13 @@ export async function generateStaticParams() {
 async function Post({ params }: { params: Params }) {
   const { slug } = await params;
 
-  const { category, content, description, lastEditedTime, title } = await Promise.resolve(
+  const { category, content, description, lastEditedTime, title, toc } = await Promise.resolve(
     getPost(slug),
   );
 
   return (
-    <main className={cn('mb-4 flex w-full flex-col px-6 py-2')}>
-      <div className={cn('mb-2 border-b')}>
+    <main className={cn('mb-4 flex w-full flex-col gap-4 px-6 py-2')}>
+      <div className={cn('border-b')}>
         <div className={cn('mb-4 flex flex-row gap-1')}>
           {category.map((item: Category) => (
             <Chip key={item.id} color={item.color} label={item.name} />
@@ -59,6 +60,7 @@ async function Post({ params }: { params: Params }) {
         <p className={cn('mb-4 text-neutral-400')}>{description}</p>
         <p className={cn('text-neutral-400')}>{lastEditedTime.format('YYYY-MM-DD')}</p>
       </div>
+      <TableOfContents toc={toc} />
       <div dangerouslySetInnerHTML={{ __html: content }} id="post" />
     </main>
   );

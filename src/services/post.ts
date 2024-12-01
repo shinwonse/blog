@@ -12,6 +12,9 @@ import { BLOG_DATABASE_ID } from '@/constants/notion';
 import { n2m, notion } from '@/services/notion';
 import { rehypeBookmark } from '@/utils/rehypeBookmark';
 import { rehypeImage } from '@/utils/rehypeImage';
+import { rehypeTOC } from '@/utils/rehypeTOC';
+
+import type { TOCItem } from './../types/notion';
 
 const processPost = (result: any) => {
   const { createdTime, lastEditedTime, properties } = camelcaseKeys(result, {
@@ -42,18 +45,23 @@ export const getPost = async (slug: string) => {
   if (!mdString.parent) {
     throw new Error('Empty content');
   }
-  const { value } = await remark()
+  const {
+    value,
+    data: { toc },
+  } = await remark()
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeHighlight)
     .use(rehypeRaw)
     .use(rehypeBookmark as any)
     .use(rehypeImage as any)
+    .use(rehypeTOC as any)
     .use(rehypeStringify)
     .process(mdString.parent.trim());
 
   return {
     content: value.toString(),
+    toc: toc as TOCItem[],
     ...processPost(response),
   };
 };
