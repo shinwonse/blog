@@ -1,15 +1,52 @@
 export type Category = {
-  color: string;
   id: string;
-  name: string;
+  type: string;
+  multiSelect: {
+    id: string;
+    name: string;
+    color: string;
+  }[];
 };
 
-export interface Post {
-  created_time: '2023-09-30T11:42:00.000Z';
-  id: 'dcd06d51-9720-4bb6-ba0e-b5faf7d35a21';
-  last_edited_time: string;
-  properties: { category: Category[]; slug: string; title: string };
-}
+export type Slug = {
+  id: string;
+  type: string;
+  richText: {
+    plainText: string;
+  }[];
+};
+
+export type Description = {
+  id: string;
+  type: string;
+  richText: {
+    plainText: string;
+  }[];
+};
+
+export type Title = {
+  id: string;
+  type: string;
+  title: {
+    plainText: string;
+  }[];
+};
+
+export type Post = {
+  object: string;
+  createdBy: { object: string; id: string };
+  createdTime: string;
+  id: string;
+  lastEditedBy: { object: string; id: string };
+  lastEditedTime: string;
+  properties: {
+    category: Category;
+    slug: Slug;
+    title: Title;
+    description: Description;
+  };
+  url: string;
+};
 
 export type TOCItem = {
   id: string;

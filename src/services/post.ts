@@ -16,6 +16,31 @@ import { rehypeTOC } from '@/utils/rehypeTOC';
 
 import type { TOCItem } from './../types/notion';
 
+// Constants for query configuration
+const QUERY_CONFIG = {
+  database_id: BLOG_DATABASE_ID,
+  page_size: 10,
+} as const;
+
+// Common database query function
+const queryNotionDatabase = async (options = {}) => {
+  return notion.databases.query({
+    ...QUERY_CONFIG,
+    ...options,
+  });
+};
+
+// Separated remark pipeline
+const remarkPipeline = remark()
+  .use(remarkGfm)
+  .use(remarkRehype, { allowDangerousHtml: true })
+  .use(rehypeHighlight)
+  .use(rehypeRaw)
+  .use(rehypeBookmark as any)
+  .use(rehypeImage as any)
+  .use(rehypeTOC as any)
+  .use(rehypeStringify);
+
 const processPost = (result: any) => {
   const { createdTime, lastEditedTime, properties } = camelcaseKeys(result, {
     deep: true,
@@ -32,32 +57,21 @@ const processPost = (result: any) => {
 };
 
 export const getPost = async (slug: string) => {
-  const { results } = await notion.databases.query({
-    database_id: BLOG_DATABASE_ID,
+  const { results } = await queryNotionDatabase({
     filter: { and: [{ property: 'slug', rich_text: { equals: `/${slug}` } }] },
   });
+
   const [response] = results;
-  if (!response) {
-    notFound();
-  }
+  if (!response) notFound();
+
   const mdBlocks = await n2m.pageToMarkdown(response.id ?? '');
   const mdString = n2m.toMarkdownString(mdBlocks);
-  if (!mdString.parent) {
-    throw new Error('Empty content');
-  }
+  if (!mdString.parent) throw new Error('Empty content');
+
   const {
     value,
     data: { toc },
-  } = await remark()
-    .use(remarkGfm)
-    .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypeHighlight)
-    .use(rehypeRaw)
-    .use(rehypeBookmark as any)
-    .use(rehypeImage as any)
-    .use(rehypeTOC as any)
-    .use(rehypeStringify)
-    .process(mdString.parent.trim());
+  } = await remarkPipeline.process(mdString.parent.trim());
 
   return {
     content: value.toString(),
@@ -66,32 +80,18 @@ export const getPost = async (slug: string) => {
   };
 };
 
-/**
- * Get all posts from the Notion database
- */
 export const getAllPosts = async () => {
-  const response = await notion.databases.query({
-    database_id: BLOG_DATABASE_ID,
-  });
-  return response.results.map(processPost);
+  const { results } = await queryNotionDatabase();
+  return results.map(processPost);
 };
 
-const PAGE_SIZE = 10;
-
-/**
- * Get all posts from the Notion database with pagination
- */
-export const getPaginatedPosts = async (startCursor = undefined) => {
-  const response = await notion.databases.query({
-    database_id: BLOG_DATABASE_ID,
-    page_size: PAGE_SIZE,
+export const getPaginatedPosts = async (startCursor?: string) => {
+  const response = await queryNotionDatabase({
     start_cursor: startCursor,
   });
 
-  const posts = response.results.map(processPost);
-
   return {
     nextCursor: response.has_more ? response.next_cursor : null,
-    posts,
+    posts: response.results.map(processPost),
   };
 };
