@@ -18,13 +18,14 @@ const validateTOC = (children: RootContent[]) => {
       const title = extractText(child as Element);
       const tagName = (child as Element).tagName;
 
-      // h2인 경우 현재 섹션 저장
       if (tagName === 'h2') {
         currentH2 = title;
-      }
-
-      // h3 이하인 경우 상위 섹션 경로 포함
-      if (tagName === 'h3' && currentH2) {
+        const newId = title.toLowerCase().replace(/[^a-z0-9가-힣]/g, '-');
+        (child as Element).properties = {
+          ...(child as Element).properties,
+          id: newId,
+        };
+      } else if (tagName === 'h3' && currentH2) {
         const newId = `${currentH2.toLowerCase()}-${title.toLowerCase()}`.replace(
           /[^a-z0-9가-힣]/g,
           '-',
