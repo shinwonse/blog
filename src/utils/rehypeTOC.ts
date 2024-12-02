@@ -2,28 +2,42 @@ import type { Element, RootContent, Text } from 'hast';
 
 const titleTags = ['h2', 'h3', 'h4'];
 
-const validateTOC = (children: RootContent[]) => {
-  const titles = children
-    .filter((child) => titleTags.includes((child as Element).tagName))
-    .map((child) => ((child as Element).children[0] as Text).value.toLowerCase());
-  const uniqueTitles = titles.filter((title, index) => titles.indexOf(title) === index);
-  if (titles.length !== uniqueTitles.length) {
-    throw new Error('Duplicate title');
+const extractText = (node: Element | Text): string => {
+  if (node.type === 'text') return node.value ?? '';
+  if ('children' in node) {
+    return node.children.map((child) => extractText(child as Element | Text)).join('');
   }
+  return '';
 };
 
-const attachID = (children: RootContent[]) =>
-  children
-    .filter((child) => titleTags.includes((child as Element).tagName))
-    .forEach((child) => {
-      const id = ((child as Element).children[0] as Text).value
-        .toLowerCase()
-        .replace(/[^a-z0-9가-힣]/g, '-');
-      (child as Element).properties = {
-        ...(child as Element).properties,
-        id,
-      };
-    });
+const validateTOC = (children: RootContent[]) => {
+  let currentH2: string | null = null;
+
+  return children.map((child) => {
+    if (titleTags.includes((child as Element).tagName)) {
+      const title = extractText(child as Element);
+      const tagName = (child as Element).tagName;
+
+      // h2인 경우 현재 섹션 저장
+      if (tagName === 'h2') {
+        currentH2 = title;
+      }
+
+      // h3 이하인 경우 상위 섹션 경로 포함
+      if (tagName === 'h3' && currentH2) {
+        const newId = `${currentH2.toLowerCase()}-${title.toLowerCase()}`.replace(
+          /[^a-z0-9가-힣]/g,
+          '-',
+        );
+        (child as Element).properties = {
+          ...(child as Element).properties,
+          id: newId,
+        };
+      }
+    }
+    return child;
+  });
+};
 
 const processTOC = (children: RootContent[]) =>
   children
@@ -44,6 +58,5 @@ export const rehypeTOC =
   () =>
   ({ children }: { children: Element[] }, { data }: { data: { toc: TOCItem[] } }) => {
     validateTOC(children);
-    attachID(children);
     data.toc = processTOC(children);
   };

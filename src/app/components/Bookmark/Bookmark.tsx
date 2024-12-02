@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 interface BookmarkProps {
   url: string;
   title: string;
@@ -23,7 +25,7 @@ const Bookmark = ({ url, title, description, image }: BookmarkProps) => {
         </div>
         {image && (
           <div className="size-24 shrink-0">
-            <img src={image} alt={title} className="size-full rounded object-cover" />
+            <Image src={image} alt={title} className="size-full rounded object-cover" />
           </div>
         )}
       </div>

@@ -36,9 +36,9 @@ const remarkPipeline = remark()
   .use(remarkRehype, { allowDangerousHtml: true })
   .use(rehypeHighlight)
   .use(rehypeRaw)
-  .use(rehypeBookmark as any)
-  .use(rehypeImage as any)
   .use(rehypeTOC as any)
+  .use(rehypeImage as any)
+  .use(rehypeBookmark as any)
   .use(rehypeStringify);
 
 const processPost = (result: any) => {

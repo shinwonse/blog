@@ -24,7 +24,7 @@ const TableOfContents = ({ toc }: Props) => {
       <ul>
         {toc.map(({ id, tagName, text }) => (
           <li
-            key={id}
+            key={text + id}
             className={cn('w-full py-1', tagName === 'h2' && 'pl-4', tagName === 'h3' && 'pl-8')}
           >
             <a
