@@ -21,16 +21,39 @@ const getImageNodes = (children: Element[], imageNodes: Element[]) =>
 const processImageNode = async (node: Element, index: number) => {
   try {
     const src = node.properties?.src;
-    if (typeof src !== 'string') {
-      console.warn('Invalid image source:', src);
+    if (typeof src !== 'string') return;
+
+    // 먼저 이미지가 이미 존재하는지 확인
+    const urlWithQuery = new URL(src);
+    const url = urlWithQuery.host + urlWithQuery.pathname;
+    const hashedURL = uuidv5(url, uuidv5.URL);
+    const filename = `${hashedURL}.webp`;
+
+    // 기존 이미지 확인을 먼저 수행
+    const { data: existingFile } = await supabase.storage.from('post').list('', {
+      search: filename,
+    });
+
+    if (existingFile?.length) {
+      // 이미 존재하는 이미지라면 바로 URL 설정
+      const {
+        data: { publicUrl: publicURL },
+      } = supabase.storage.from('post').getPublicUrl(filename);
+
+      node.properties = {
+        ...node.properties,
+        src: publicURL,
+        loading: index ? 'lazy' : 'eager',
+        width: SIZE,
+        height: SIZE, // 실제 높이는 클라이언트에서 계산
+      };
       return;
     }
 
-    // Fetch image with error handling
+    // 새 이미지만 처리
     const response = await fetch(src);
-    if (!response.ok) {
-      throw new Error(`Failed to fetch image: ${response.statusText}`);
-    }
+    if (!response.ok) throw new Error(`Failed to fetch image: ${response.statusText}`);
+
     const originImage = await response.arrayBuffer();
 
     /* 이미지 최적화 */
@@ -46,16 +69,6 @@ const processImageNode = async (node: Element, index: number) => {
       .resize(4)
       .toBuffer()
       .then((data) => data.toString('base64'));
-
-    const urlWithQuery = new URL(src);
-    const url = urlWithQuery.host + urlWithQuery.pathname;
-    const hashedURL = uuidv5(url, uuidv5.URL);
-    const filename = `${hashedURL}.webp`;
-
-    // 먼저 파일이 존재하는지 확인
-    const { data: existingFile } = await supabase.storage.from('post').list('', {
-      search: filename,
-    });
 
     // 파일이 존재하지 않을 때만 업로드
     if (!existingFile?.length) {
@@ -86,7 +99,6 @@ const processImageNode = async (node: Element, index: number) => {
     node.properties.style = index ? `background: url('data:image/webp;base64,${placeholder}')` : '';
   } catch (error) {
     console.error('Image processing failed:', error);
-    // Keep original image source if processing fails
     return;
   }
 };
