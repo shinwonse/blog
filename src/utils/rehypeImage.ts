@@ -35,6 +35,7 @@ const processImageNode = async (node: Element, index: number) => {
 
     /* 이미지 최적화 */
     const image = sharp(originImage)
+      .rotate()
       .resize({ width: SIZE * 2 })
       .webp({ effort: 6 });
     const { height = SIZE, width = SIZE } = await image.metadata();
