@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import Card from '@/app/components/Card';
+import Card from '@/components/card';
 import { getPaginatedPosts } from '@/services/post';
 import { cn } from '@/utils/cn';
 

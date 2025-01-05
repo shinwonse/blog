@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 
-import Chip from '@/app/components/Chip';
-import TableOfContents from '@/app/components/TableOfContents';
 import { getAllPosts, getPost } from '@/services/post';
 import { cn } from '@/utils/cn';
 import { extractCoverImageInfo } from '@/utils/extractCoverImageInfo';
+
+import { TableOfContents, TagChip } from '../components';
 
 type Category = {
   color: string;
@@ -53,7 +53,7 @@ async function Post({ params }: { params: Params }) {
       <div className={cn('border-b')}>
         <div className={cn('mb-4 flex flex-row gap-1')}>
           {category.map((item: Category) => (
-            <Chip key={item.id} color={item.color} label={item.name} />
+            <TagChip key={item.id} color={item.color} label={item.name} />
           ))}
         </div>
         <h1 className={cn('mb-1 text-2xl')}>{title}</h1>

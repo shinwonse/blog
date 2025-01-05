@@ -6,9 +6,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import type { ReactNode } from 'react';
 
-import Footer from '@/app/components/Footer';
-import Header from '@/app/components/Header';
-import { ThemeProvider } from '@/components/theme-provider';
+import { Footer, Header, ThemeProvider } from '@/components';
 import { cn } from '@/utils/cn';
 
 const GmarketSans = localFont({
@@ -42,7 +40,7 @@ export const metadata: Metadata = {
   title: '개발자 신원세',
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <html lang="ko" suppressHydrationWarning>
       <body className={cn(GmarketSans.className)}>
@@ -63,4 +61,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

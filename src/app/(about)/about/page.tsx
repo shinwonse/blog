@@ -1,5 +1,6 @@
-import TimeLine from '@/app/components/TimeLine';
 import { cn } from '@/utils/cn';
+
+import TimeLine from '../components/time-line';
 
 const careers = [
   {
@@ -46,7 +47,7 @@ const educations = [
   },
 ];
 
-function AboutPage() {
+const AboutPage = () => {
   return (
     <main className={cn('px-6')}>
       <section className={cn('flex flex-col items-center py-12')}>
@@ -65,6 +66,6 @@ function AboutPage() {
       </section>
     </main>
   );
-}
+};
 
 export default AboutPage;
