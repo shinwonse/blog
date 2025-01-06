@@ -4,7 +4,7 @@ import { getAllPosts, getPost } from '@/services/post';
 import { cn } from '@/utils/cn';
 import { extractCoverImageInfo } from '@/utils/extractCoverImageInfo';
 
-import { TableOfContents, TagChip } from '../components';
+import { Giscus, TableOfContents, TagChip } from '../components';
 
 type Category = {
   color: string;
@@ -62,6 +62,7 @@ async function Post({ params }: { params: Params }) {
       </div>
       <TableOfContents toc={toc} />
       <div dangerouslySetInnerHTML={{ __html: content }} id="post" />
+      <Giscus />
     </main>
   );
 }
