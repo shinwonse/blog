@@ -109,6 +109,19 @@
       input {
         @apply mr-4 w-5 h-5;
       }
+
+      > ul {
+        @apply ml-6 py-1;
+        li {
+          @apply text-[0.95em];
+          &:not(.task-list-item) {
+            @apply list-[circle];
+          }
+          > ul li:not(.task-list-item) {
+            @apply list-[square];
+          }
+        }
+      }
     }
   }
 
