@@ -27,7 +27,7 @@
 
   p {
     @apply text-pretty text-base font-normal leading-7 tracking-wide py-4;
-    @media screen(sm) {
+    @media (min-width: theme('screens.sm')) {
       @apply text-lg leading-9;
     }
     strong {
@@ -92,7 +92,7 @@
     @apply py-4 leading-9;
     li {
       @apply pb-1 font-normal text-base leading-7;
-      @media screen(sm) {
+      @media (min-width: theme('screens.sm')) {
         @apply text-lg leading-9;
       }
       &.task-list-item:has(p) {
