@@ -58,6 +58,7 @@
 		"uuid": "^9.0.1"
 	},
 	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
 		"@types/cheerio": "^0.22.35",
 		"@types/glob": "^8.1.0",
 		"@types/hast": "^3.0.4",
@@ -78,9 +79,6 @@
 		"unist-util-visit": "^5.0.0"
 	},
 	"optionalDependencies": {
-		"eslint": "^9.20.1",
-		"eslint-config-next": "^15.1.7",
-		"eslint-plugin-tailwindcss": "^3.18.0",
 		"prettier": "^3.5.1",
 		"prettier-plugin-tailwindcss": "^0.6.11"
 	}
