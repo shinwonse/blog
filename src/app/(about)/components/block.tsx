@@ -1,12 +1,12 @@
 import { cn } from '@/utils/cn';
 
-export type BlockContent = {
+export interface BlockContent {
 	dateRange: string;
 	department: string;
 	description?: string;
 	englishName: string;
 	koreanName: string;
-};
+}
 
 type BlockProps = {
 	blockContent: BlockContent;
