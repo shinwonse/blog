@@ -1,17 +1,19 @@
 pre code.hljs {
   display: block;
-  padding: 1em;
+  padding: 1.2rem;
   overflow-x: auto;
-  @apply text-base
+  @apply text-[15px] leading-relaxed rounded-lg my-4 shadow-sm;
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 .hljs {
-  color: #c5c8c6;
-  background: #303030;
+  color: #e4e4e7;
+  background: #18181b;
 }
 
 .hljs-comment {
-  color: #8d8d8d;
+  color: #71717a;
+  font-style: italic;
 }
 
 .hljs-quote {
@@ -26,7 +28,7 @@ pre code.hljs {
 .hljs-tag,
 .hljs-template-variable,
 .hljs-variable {
-  color: #d76c6c;
+  color: #f87171;
 }
 
 .hljs-built_in,
@@ -34,31 +36,31 @@ pre code.hljs {
 .hljs-number,
 .hljs-subst .hljs-link,
 .hljs-type {
-  color: #de935f;
+  color: #fb923c;
 }
 
 .hljs-attribute {
-  color: #f0c674;
+  color: #fbbf24;
 }
 
 .hljs-addition,
 .hljs-bullet,
 .hljs-params,
 .hljs-string {
-  color: #b5bd68;
+  color: #a3e635;
 }
 
 .hljs-class,
 .hljs-function,
 .hljs-keyword,
 .hljs-selector-tag {
-  color: #be94bb;
+  color: #c084fc;
 }
 
 .hljs-meta,
 .hljs-section,
 .hljs-title {
-  color: #81a2be;
+  color: #60a5fa;
 }
 
 .hljs-symbol {
