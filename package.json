@@ -80,6 +80,7 @@
 	},
 	"optionalDependencies": {
 		"prettier": "^3.5.1",
-		"prettier-plugin-tailwindcss": "^0.6.11"
+		"prettier-plugin-tailwindcss": "^0.6.11",
+		"@img/sharp-linux-x64": "^0.33.5"
 	}
 }
