@@ -205,9 +205,6 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
     optionalDependencies:
-      '@img/sharp-linux-x64':
-        specifier: ^0.33.5
-        version: 0.33.5
       prettier:
         specifier: ^3.5.1
         version: 3.5.1
