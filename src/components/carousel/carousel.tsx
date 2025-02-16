@@ -12,12 +12,20 @@ type CarouselProps<T> = {
   renderItem: (item: T) => React.ReactNode;
 };
 
-const Carousel = <T,>({ className, items, getKey, renderItem }: CarouselProps<T>) => {
+const Carousel = <T,>({
+  className,
+  items,
+  getKey,
+  renderItem,
+}: CarouselProps<T>) => {
   return (
     <ShadcnCarousel className={cn(className)}>
       <CarouselContent className={cn('-ml-4')}>
         {items?.map((item) => (
-          <CarouselItem key={getKey(item)} className={cn('basis-3/5 pl-4 sm:basis-1/3')}>
+          <CarouselItem
+            key={getKey(item)}
+            className={cn('basis-3/5 pl-4 sm:basis-1/3')}
+          >
             {renderItem(item)}
           </CarouselItem>
         ))}

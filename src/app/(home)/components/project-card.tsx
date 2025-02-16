@@ -43,7 +43,9 @@ const ProjectCard = ({
       </div>
       <div className={cn('flex flex-col gap-3 p-6')}>
         <div className={cn('flex flex-col items-start gap-2')}>
-          <h3 className={cn('break-keep text-sm font-bold sm:text-xl')}>{title}</h3>
+          <h3 className={cn('break-keep text-sm font-bold sm:text-xl')}>
+            {title}
+          </h3>
           <div className={cn('flex flex-row gap-1')}>
             <Link href={githubUrl} target="_blank">
               <GitHubLogoIcon />

@@ -62,13 +62,19 @@ export const rehypeBookmark = () => {
                                 type: 'element',
                                 tagName: 'div',
                                 properties: { className: ['bookmark-title'] },
-                                children: [{ type: 'text', value: metadata.title }],
+                                children: [
+                                  { type: 'text', value: metadata.title },
+                                ],
                               },
                               {
                                 type: 'element',
                                 tagName: 'div',
-                                properties: { className: ['bookmark-description'] },
-                                children: [{ type: 'text', value: metadata.description }],
+                                properties: {
+                                  className: ['bookmark-description'],
+                                },
+                                children: [
+                                  { type: 'text', value: metadata.description },
+                                ],
                               },
                               {
                                 type: 'element',

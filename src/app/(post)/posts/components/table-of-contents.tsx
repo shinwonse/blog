@@ -20,15 +20,23 @@ const TableOfContents = ({ toc }: Props) => {
   };
 
   return (
-    <div className={cn('border-l-2 border-stone-600 pl-4 text-sm text-stone-400')}>
+    <div
+      className={cn('border-l-2 border-stone-600 pl-4 text-sm text-stone-400')}
+    >
       <ul>
         {toc.map(({ id, tagName, text }) => (
           <li
             key={text + id}
-            className={cn('w-full py-1', tagName === 'h2' && 'pl-4', tagName === 'h3' && 'pl-8')}
+            className={cn(
+              'w-full py-1',
+              tagName === 'h2' && 'pl-4',
+              tagName === 'h3' && 'pl-8',
+            )}
           >
             <a
-              className={cn('block truncate transition-colors hover:text-stone-200')}
+              className={cn(
+                'block truncate transition-colors hover:text-stone-200',
+              )}
               href={`#${id}`}
               onClick={(e) => handleClick(e, id)}
             >

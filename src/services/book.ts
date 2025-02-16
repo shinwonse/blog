@@ -4,9 +4,12 @@ import dayjs from 'dayjs';
 import { notion } from '@/services/notion';
 
 const processBook = (result: any) => {
-  const { cover, createdTime, id, lastEditedTime, properties } = camelcaseKeys(result, {
-    deep: true,
-  });
+  const { cover, createdTime, id, lastEditedTime, properties } = camelcaseKeys(
+    result,
+    {
+      deep: true,
+    },
+  );
   const { author, name } = properties;
   const { file } = cover;
   const encodedURI = encodeURIComponent(file.url.split('?')[0]);

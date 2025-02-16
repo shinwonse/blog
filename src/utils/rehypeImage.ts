@@ -30,9 +30,11 @@ const processImageNode = async (node: Element, index: number) => {
     const filename = `${hashedURL}.webp`;
 
     // 기존 이미지 확인을 먼저 수행
-    const { data: existingFile } = await supabase.storage.from('post').list('', {
-      search: filename,
-    });
+    const { data: existingFile } = await supabase.storage
+      .from('post')
+      .list('', {
+        search: filename,
+      });
 
     if (existingFile?.length) {
       // 이미 존재하는 이미지라면 바로 URL 설정
@@ -52,7 +54,8 @@ const processImageNode = async (node: Element, index: number) => {
 
     // 새 이미지만 처리
     const response = await fetch(src);
-    if (!response.ok) throw new Error(`Failed to fetch image: ${response.statusText}`);
+    if (!response.ok)
+      throw new Error(`Failed to fetch image: ${response.statusText}`);
 
     const originImage = await response.arrayBuffer();
 
@@ -72,11 +75,13 @@ const processImageNode = async (node: Element, index: number) => {
 
     // 파일이 존재하지 않을 때만 업로드
     if (!existingFile?.length) {
-      const { error: uploadError } = await supabase.storage.from('post').upload(filename, buffer, {
-        contentType: 'image/webp',
-        cacheControl: '31536000',
-        upsert: false,
-      });
+      const { error: uploadError } = await supabase.storage
+        .from('post')
+        .upload(filename, buffer, {
+          contentType: 'image/webp',
+          cacheControl: '31536000',
+          upsert: false,
+        });
 
       if (uploadError) {
         console.error('Upload error:', uploadError);
@@ -96,7 +101,9 @@ const processImageNode = async (node: Element, index: number) => {
     node.properties.loading = index ? 'lazy' : 'eager';
     node.properties.width = SIZE;
     node.properties.height = Math.round(height * (SIZE / width));
-    node.properties.style = index ? `background: url('data:image/webp;base64,${placeholder}')` : '';
+    node.properties.style = index
+      ? `background: url('data:image/webp;base64,${placeholder}')`
+      : '';
   } catch (error) {
     console.error('Image processing failed:', error);
     return;

@@ -14,10 +14,16 @@ type Category = {
 
 type Params = Promise<{ slug: string }>;
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Params;
+}): Promise<Metadata> {
   const { slug } = await params;
 
-  const { content, description, lastEditedTime, title } = await Promise.resolve(getPost(slug));
+  const { content, description, lastEditedTime, title } = await Promise.resolve(
+    getPost(slug),
+  );
   const { alt = '', src = '' } = extractCoverImageInfo(content);
 
   return {
@@ -44,9 +50,8 @@ export async function generateStaticParams() {
 async function Post({ params }: { params: Params }) {
   const { slug } = await params;
 
-  const { category, content, description, lastEditedTime, title, toc } = await Promise.resolve(
-    getPost(slug),
-  );
+  const { category, content, description, lastEditedTime, title, toc } =
+    await Promise.resolve(getPost(slug));
 
   return (
     <main className={cn('mb-4 flex w-full flex-col gap-4 px-6 py-2')}>
@@ -58,7 +63,9 @@ async function Post({ params }: { params: Params }) {
         </div>
         <h1 className={cn('mb-1 text-2xl')}>{title}</h1>
         <p className={cn('mb-4 text-neutral-400')}>{description}</p>
-        <p className={cn('text-neutral-400')}>{lastEditedTime.format('YYYY-MM-DD')}</p>
+        <p className={cn('text-neutral-400')}>
+          {lastEditedTime.format('YYYY-MM-DD')}
+        </p>
       </div>
       <TableOfContents toc={toc} />
       <div dangerouslySetInnerHTML={{ __html: content }} id="post" />

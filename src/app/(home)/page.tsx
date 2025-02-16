@@ -1,6 +1,11 @@
 import { cn } from '@/utils/cn';
 
-import { BookSection, IntroductionSection, ProjectSection, RecentPostSection } from './components';
+import {
+  BookSection,
+  IntroductionSection,
+  ProjectSection,
+  RecentPostSection,
+} from './components';
 
 export default function Home() {
   return (

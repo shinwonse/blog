@@ -17,7 +17,10 @@ async function getMetadata(url: string): Promise<MetaData> {
     const domain = new URL(url).hostname;
 
     return {
-      title: $('meta[property="og:title"]').attr('content') || $('title').text() || domain,
+      title:
+        $('meta[property="og:title"]').attr('content') ||
+        $('title').text() ||
+        domain,
       description:
         $('meta[property="og:description"]').attr('content') ||
         $('meta[name="description"]').attr('content') ||

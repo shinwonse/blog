@@ -15,7 +15,13 @@ const TimeLine = ({ className, data, title }: TimeLineProps) => {
       <h2 className={cn('text-xl sm:text-3xl')}>{title}</h2>
       <div className={cn('flex w-full flex-col gap-4 py-8')}>
         {data?.map((career) => {
-          return <Block key={career.koreanName} blockContent={career} className={cn('w-full')} />;
+          return (
+            <Block
+              key={career.koreanName}
+              blockContent={career}
+              className={cn('w-full')}
+            />
+          );
         })}
       </div>
     </section>

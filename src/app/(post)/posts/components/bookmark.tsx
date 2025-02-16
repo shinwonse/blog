@@ -20,12 +20,20 @@ const Bookmark = ({ url, title, description, image }: BookmarkProps) => {
       <div className="flex gap-4 p-4">
         <div className="min-w-0 flex-1">
           <h3 className="truncate font-medium text-gray-900">{title}</h3>
-          {description && <p className="mt-1 line-clamp-2 text-sm text-gray-500">{description}</p>}
+          {description && (
+            <p className="mt-1 line-clamp-2 text-sm text-gray-500">
+              {description}
+            </p>
+          )}
           <p className="mt-1 truncate text-sm text-gray-500">{url}</p>
         </div>
         {image && (
           <div className="size-24 shrink-0">
-            <Image src={image} alt={title} className="size-full rounded object-cover" />
+            <Image
+              src={image}
+              alt={title}
+              className="size-full rounded object-cover"
+            />
           </div>
         )}
       </div>

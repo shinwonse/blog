@@ -5,7 +5,9 @@ const titleTags = ['h2', 'h3', 'h4'];
 const extractText = (node: Element | Text): string => {
   if (node.type === 'text') return node.value ?? '';
   if ('children' in node) {
-    return node.children.map((child) => extractText(child as Element | Text)).join('');
+    return node.children
+      .map((child) => extractText(child as Element | Text))
+      .join('');
   }
   return '';
 };
@@ -26,10 +28,11 @@ const validateTOC = (children: RootContent[]) => {
           id: newId,
         };
       } else if (tagName === 'h3' && currentH2) {
-        const newId = `${currentH2.toLowerCase()}-${title.toLowerCase()}`.replace(
-          /[^a-z0-9가-힣]/g,
-          '-',
-        );
+        const newId =
+          `${currentH2.toLowerCase()}-${title.toLowerCase()}`.replace(
+            /[^a-z0-9가-힣]/g,
+            '-',
+          );
         (child as Element).properties = {
           ...(child as Element).properties,
           id: newId,
@@ -57,7 +60,10 @@ type TOCItem = {
 
 export const rehypeTOC =
   () =>
-  ({ children }: { children: Element[] }, { data }: { data: { toc: TOCItem[] } }) => {
+  (
+    { children }: { children: Element[] },
+    { data }: { data: { toc: TOCItem[] } },
+  ) => {
     validateTOC(children);
     data.toc = processTOC(children);
   };

@@ -35,8 +35,13 @@ const Giscus = () => {
 
   // https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#isetconfigmessage
   useEffect(() => {
-    const iframe = document.querySelector<HTMLIFrameElement>('iframe.giscus-frame');
-    iframe?.contentWindow?.postMessage({ giscus: { setConfig: { theme } } }, 'https://giscus.app');
+    const iframe = document.querySelector<HTMLIFrameElement>(
+      'iframe.giscus-frame',
+    );
+    iframe?.contentWindow?.postMessage(
+      { giscus: { setConfig: { theme } } },
+      'https://giscus.app',
+    );
   }, [theme]);
 
   return <section ref={ref} />;
