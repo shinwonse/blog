@@ -55,19 +55,31 @@ const educations = [
 
 function AboutPage() {
 	return (
-		<main className={cn('px-6')}>
-			<section className={cn('flex flex-col items-center py-12')}>
-				<h1 className={cn('mb-1 text-base sm:text-3xl')}>
-					안녕하세요!{' '}
-					<span className={cn('font-bold')}>Software Engineer 신원세</span>
-					입니다.
+		<main className={cn('flex w-full flex-col items-center py-12')}>
+			<section
+				className={cn(
+					'mb-16 flex w-full max-w-3xl flex-col items-center gap-4 text-center',
+				)}
+			>
+				<h1
+					className={cn(
+						'text-3xl font-bold tracking-tight sm:text-5xl',
+						'bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text text-transparent',
+					)}
+				>
+					안녕하세요!
 				</h1>
-				<p className={cn('text-sm sm:text-base')}></p>
+				<p className={cn('text-xl text-muted-foreground sm:text-2xl')}>
+					<span className={cn('font-semibold text-foreground')}>
+						Software Engineer 신원세
+					</span>
+					입니다
+				</p>
 			</section>
-			<section className={cn('flex flex-col gap-12')}>
-				<TimeLine className={cn('mt-4')} data={careers} title="Careers" />
-				<TimeLine className={cn('mt-4')} data={activities} title="Activities" />
-				<TimeLine className={cn('mt-4')} data={educations} title="Education" />
+			<section className={cn('flex w-full max-w-4xl flex-col gap-16')}>
+				<TimeLine data={careers} title="Careers" />
+				<TimeLine data={activities} title="Activities" />
+				<TimeLine data={educations} title="Education" />
 			</section>
 		</main>
 	);

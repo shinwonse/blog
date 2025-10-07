@@ -92,9 +92,15 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
 					disableTransitionOnChange
 					enableSystem
 				>
-					<div className={cn('mx-auto flex max-w-3xl flex-col justify-center')}>
+					<div className={cn('relative flex min-h-screen flex-col')}>
 						<Header />
-						{children}
+						<div
+							className={cn(
+								'mx-auto w-full max-w-7xl flex-1 px-4 sm:px-6 lg:px-8',
+							)}
+						>
+							{children}
+						</div>
 						<Footer />
 					</div>
 				</ThemeProvider>

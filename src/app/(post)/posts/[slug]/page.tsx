@@ -54,23 +54,43 @@ async function Post({ params }: { params: Params }) {
 		await Promise.resolve(getPost(slug));
 
 	return (
-		<main className={cn('mb-4 flex w-full flex-col gap-4 px-6 py-2')}>
-			<div className={cn('border-b')}>
-				<div className={cn('mb-4 flex flex-row gap-1')}>
-					{category.map((item: Category) => (
-						<TagChip key={item.id} color={item.color} label={item.name} />
-					))}
-				</div>
-				<h1 className={cn('mb-1 text-2xl')}>{title}</h1>
-				<p className={cn('mb-4 text-neutral-400')}>{description}</p>
-				<p className={cn('text-neutral-400')}>
-					{lastEditedTime.format('YYYY-MM-DD')}
-				</p>
-			</div>
-			<TableOfContents toc={toc} />
-			{/* biome-ignore lint/security/noDangerouslySetInnerHtml: This is Notion content */}
-			<div dangerouslySetInnerHTML={{ __html: content }} id="post" />
-			<Giscus />
+		<main className={cn('flex w-full flex-col items-center py-12')}>
+			<article className={cn('w-full max-w-3xl')}>
+				<header
+					className={cn(
+						'mb-12 flex flex-col gap-6 border-b border-border/40 pb-8',
+					)}
+				>
+					<div className={cn('flex flex-row flex-wrap gap-2')}>
+						{category.map((item: Category) => (
+							<TagChip key={item.id} color={item.color} label={item.name} />
+						))}
+					</div>
+					<h1
+						className={cn(
+							'text-3xl font-bold leading-tight tracking-tight text-balance sm:text-4xl lg:text-5xl',
+							'bg-gradient-to-br from-foreground to-foreground/80 bg-clip-text',
+						)}
+					>
+						{title}
+					</h1>
+					<p className={cn('text-lg text-muted-foreground leading-relaxed')}>
+						{description}
+					</p>
+					<time className={cn('text-sm text-muted-foreground/80')}>
+						{lastEditedTime.format('YYYY년 MM월 DD일')}
+					</time>
+				</header>
+				<TableOfContents toc={toc} />
+				{/* biome-ignore lint/security/noDangerouslySetInnerHtml: Notion content requires HTML rendering */}
+				{/* biome-ignore lint/a11y/useValidAriaValues: Static ID used for post styling */}
+				<div
+					className={cn('prose prose-lg dark:prose-invert max-w-none')}
+					dangerouslySetInnerHTML={{ __html: content }}
+					id="post"
+				/>
+				<Giscus />
+			</article>
 		</main>
 	);
 }

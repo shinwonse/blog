@@ -11,9 +11,11 @@ interface TimeLineProps {
 
 function TimeLine({ className, data, title }: TimeLineProps) {
 	return (
-		<section className={cn('flex w-full flex-col items-center', className)}>
-			<h2 className={cn('text-xl sm:text-3xl')}>{title}</h2>
-			<div className={cn('flex w-full flex-col gap-4 py-8')}>
+		<section className={cn('flex w-full flex-col', className)}>
+			<h2 className={cn('mb-6 text-2xl font-bold tracking-tight sm:text-3xl')}>
+				{title}
+			</h2>
+			<div className={cn('flex w-full flex-col gap-6')}>
 				{data?.map((career) => {
 					return (
 						<Block
