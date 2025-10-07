@@ -62,8 +62,7 @@ function AboutPage() {
 					<span className={cn('font-bold')}>Software Engineer 신원세</span>
 					입니다.
 				</h1>
-				<p className={cn('text-sm sm:text-base')}>
-				</p>
+				<p className={cn('text-sm sm:text-base')}></p>
 			</section>
 			<section className={cn('flex flex-col gap-12')}>
 				<TimeLine className={cn('mt-4')} data={careers} title="Careers" />

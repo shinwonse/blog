@@ -7,7 +7,10 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"format:tailwind": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\""
+		"format:tailwind": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
+		"lint": "biome check .",
+		"lint:fix": "biome check --write .",
+		"format": "biome format --write ."
 	},
 	"dependencies": {
 		"@notionhq/client": "^2.3.0",
@@ -58,7 +61,7 @@
 		"uuid": "^9.0.1"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.9.4",
+		"@biomejs/biome": "2.2.5",
 		"@types/cheerio": "^0.22.35",
 		"@types/glob": "^8.1.0",
 		"@types/hast": "^3.0.4",
