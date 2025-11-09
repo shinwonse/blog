@@ -20,10 +20,11 @@ const Header = () => {
 				<Link
 					href="/"
 					className={cn(
-						'text-lg font-bold transition-colors hover:text-foreground/80',
+						'text-sm font-medium transition-colors hover:text-foreground/80 text-foreground/60',
 					)}
+					aria-label="홈으로 이동"
 				>
-					신원세
+					HOME
 				</Link>
 				<nav className={cn('flex flex-row items-center gap-6')}>
 					<Link
