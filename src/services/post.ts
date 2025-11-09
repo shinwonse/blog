@@ -18,80 +18,110 @@ import type { TOCItem } from './../types/notion';
 
 // Constants for query configuration
 const QUERY_CONFIG = {
-  database_id: BLOG_DATABASE_ID,
-  page_size: 10,
-} as const;
+	database_id: BLOG_DATABASE_ID,
+	page_size: 10,
+	sorts: [
+		{
+			timestamp: 'last_edited_time' as const,
+			direction: 'descending' as const,
+		},
+	],
+};
 
 // Common database query function
 const queryNotionDatabase = async (options = {}) => {
-  return notion.databases.query({
-    ...QUERY_CONFIG,
-    ...options,
-  });
+	return notion.databases.query({
+		...QUERY_CONFIG,
+		...options,
+	});
 };
 
 // Separated remark pipeline
 const remarkPipeline = remark()
-  .use(remarkGfm)
-  .use(remarkRehype, { allowDangerousHtml: true })
-  .use(rehypeHighlight)
-  .use(rehypeRaw)
-  .use(rehypeTOC as any)
-  .use(rehypeImage as any)
-  .use(rehypeBookmark as any)
-  .use(rehypeStringify);
+	.use(remarkGfm)
+	.use(remarkRehype, { allowDangerousHtml: true })
+	.use(rehypeHighlight)
+	.use(rehypeRaw)
+	.use(rehypeTOC as any)
+	.use(rehypeImage as any)
+	.use(rehypeBookmark as any)
+	.use(rehypeStringify);
 
 const processPost = (result: any) => {
-  const { createdTime, lastEditedTime, properties } = camelcaseKeys(result, {
-    deep: true,
-  });
-  const { category, description, slug, title } = properties;
-  return {
-    category: category.multiSelect,
-    createdTime: dayjs(createdTime),
-    description: description.richText[0]?.plainText ?? null,
-    lastEditedTime: dayjs(lastEditedTime),
-    slug: slug.richText[0].plainText,
-    title: title.title[0]?.plainText ?? '',
-  };
+	const { createdTime, lastEditedTime, properties } = camelcaseKeys(result, {
+		deep: true,
+	});
+	const { category, description, slug, title } = properties;
+	return {
+		category: category.multiSelect,
+		createdTime: dayjs(createdTime),
+		description: description.richText[0]?.plainText ?? null,
+		lastEditedTime: dayjs(lastEditedTime),
+		slug: slug.richText[0].plainText,
+		title: title.title[0]?.plainText ?? '',
+	};
 };
 
 export const getPost = async (slug: string) => {
-  const { results } = await queryNotionDatabase({
-    filter: { and: [{ property: 'slug', rich_text: { equals: `/${slug}` } }] },
-  });
+	const { results } = await queryNotionDatabase({
+		filter: { and: [{ property: 'slug', rich_text: { equals: `/${slug}` } }] },
+	});
 
-  const [response] = results;
-  if (!response) notFound();
+	const [response] = results;
+	if (!response) notFound();
 
-  const mdBlocks = await n2m.pageToMarkdown(response.id ?? '');
-  const mdString = n2m.toMarkdownString(mdBlocks);
-  if (!mdString.parent) throw new Error('Empty content');
+	const mdBlocks = await n2m.pageToMarkdown(response.id ?? '');
+	const mdString = n2m.toMarkdownString(mdBlocks);
+	if (!mdString.parent) throw new Error('Empty content');
 
-  const {
-    value,
-    data: { toc },
-  } = await remarkPipeline.process(mdString.parent.trim());
+	const {
+		value,
+		data: { toc },
+	} = await remarkPipeline.process(mdString.parent.trim());
 
-  return {
-    content: value.toString(),
-    toc: toc as TOCItem[],
-    ...processPost(response),
-  };
+	return {
+		content: value.toString(),
+		toc: toc as TOCItem[],
+		...processPost(response),
+	};
 };
 
 export const getAllPosts = async () => {
-  const { results } = await queryNotionDatabase();
-  return results.map(processPost);
+	const { results } = await queryNotionDatabase();
+	return results.map(processPost);
 };
 
-export const getPaginatedPosts = async (startCursor?: string) => {
-  const response = await queryNotionDatabase({
-    start_cursor: startCursor,
-  });
+export const getPaginatedPosts = async (page = 1, pageSize = 12) => {
+	// Calculate how many items to skip
+	const itemsToSkip = (page - 1) * pageSize;
 
-  return {
-    nextCursor: response.has_more ? response.next_cursor : null,
-    posts: response.results.map(processPost),
-  };
+	// Fetch all posts by following pagination
+	let allResults: any[] = [];
+	let hasMore = true;
+	let startCursor: string | undefined;
+
+	while (hasMore) {
+		const response = await queryNotionDatabase({
+			page_size: 100, // Fetch maximum allowed by Notion
+			start_cursor: startCursor,
+		});
+
+		allResults = [...allResults, ...response.results];
+		hasMore = response.has_more;
+		startCursor = response.next_cursor || undefined;
+	}
+
+	const allPosts = allResults.map(processPost);
+	const totalPosts = allPosts.length;
+	const totalPages = Math.ceil(totalPosts / pageSize);
+
+	// Slice the posts for the current page
+	const posts = allPosts.slice(itemsToSkip, itemsToSkip + pageSize);
+
+	return {
+		currentPage: page,
+		posts,
+		totalPages,
+		totalPosts,
+	};
 };
