@@ -46,7 +46,7 @@ const PortfolioPage = ({ posts }: PortfolioPageProps) => {
 
 			<div
 				className={cn(
-					'mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0',
+					'mx-auto min-h-screen max-w-7xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0',
 				)}
 			>
 				<div className={cn('lg:flex lg:justify-between lg:gap-4')}>
@@ -94,7 +94,8 @@ const PortfolioPage = ({ posts }: PortfolioPageProps) => {
 											<span className={cn('font-medium text-stone-200')}>
 												React
 											</span>{' '}
-											생태계에 깊은 관심을 가지고 있으며, 단순한 기능 구현을 넘어{' '}
+											생태계에 깊은 관심을 가지고 있으며, 단순한 기능 구현을
+											넘어{' '}
 											<span className={cn('font-medium text-stone-200')}>
 												DX(개발자 경험)
 											</span>
@@ -130,8 +131,8 @@ const PortfolioPage = ({ posts }: PortfolioPageProps) => {
 										</h2>
 									</div>
 									<ol className={cn('group/list')}>
-										{EXPERIENCE.map((exp, index) => (
-											<li key={index} className={cn('mb-12')}>
+										{EXPERIENCE.map((exp) => (
+											<li key={exp.company} className={cn('mb-12')}>
 												<ExperienceCard data={exp} />
 											</li>
 										))}
@@ -175,8 +176,8 @@ const PortfolioPage = ({ posts }: PortfolioPageProps) => {
 										</h2>
 									</div>
 									<ul className={cn('group/list')}>
-										{PROJECTS.map((project, index) => (
-											<li key={index} className={cn('mb-12')}>
+										{PROJECTS.map((project) => (
+											<li key={project.title} className={cn('mb-12')}>
 												<ProjectCard data={project} />
 											</li>
 										))}
@@ -206,12 +207,12 @@ const PortfolioPage = ({ posts }: PortfolioPageProps) => {
 										</h2>
 									</div>
 									<ul className={cn('group/list')}>
-										{WRITING.map((item, index) => (
-											<li key={index} className={cn('mb-12')}>
+										{WRITING.map((item) => (
+											<li key={item.title} className={cn('mb-12')}>
 												<div
 													className={cn(
 														'group relative grid grid-cols-8 gap-4 transition-all sm:items-center sm:gap-8 md:gap-4',
-														'lg:hover:!opacity-100 lg:group-hover/list:opacity-50',
+														'lg:hover:opacity-100! lg:group-hover/list:opacity-50',
 													)}
 												>
 													<div
@@ -264,44 +265,7 @@ const PortfolioPage = ({ posts }: PortfolioPageProps) => {
 
 						<footer
 							className={cn('max-w-md pb-16 text-sm text-stone-500 sm:pb-0')}
-						>
-							<p>
-								Designed and coded by yours truly. Built with{' '}
-								<a
-									href="https://nextjs.org/"
-									className={cn(
-										'font-medium text-stone-400 hover:text-accent-400 focus-visible:text-accent-400',
-									)}
-									target="_blank"
-									rel="noreferrer"
-								>
-									Next.js
-								</a>{' '}
-								and{' '}
-								<a
-									href="https://tailwindcss.com/"
-									className={cn(
-										'font-medium text-stone-400 hover:text-accent-400 focus-visible:text-accent-400',
-									)}
-									target="_blank"
-									rel="noreferrer"
-								>
-									Tailwind CSS
-								</a>
-								, deployed with{' '}
-								<a
-									href="https://vercel.com/"
-									className={cn(
-										'font-medium text-stone-400 hover:text-accent-400 focus-visible:text-accent-400',
-									)}
-									target="_blank"
-									rel="noreferrer"
-								>
-									Vercel
-								</a>
-								.
-							</p>
-						</footer>
+						/>
 					</main>
 				</div>
 			</div>
@@ -310,4 +274,3 @@ const PortfolioPage = ({ posts }: PortfolioPageProps) => {
 };
 
 export default PortfolioPage;
-
