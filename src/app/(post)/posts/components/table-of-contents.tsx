@@ -21,11 +21,13 @@ const TableOfContents = ({ toc }: Props) => {
 
 	return (
 		<nav
-			className={cn('my-8 rounded-xl border border-border/50 bg-muted/30 p-6')}
+			className={cn(
+				'my-8 rounded-xl border border-stone-700/50 bg-stone-800/30 p-6',
+			)}
 		>
 			<h2
 				className={cn(
-					'mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground',
+					'mb-4 text-sm font-semibold uppercase tracking-wider text-stone-400',
 				)}
 			>
 				목차
@@ -42,8 +44,7 @@ const TableOfContents = ({ toc }: Props) => {
 					>
 						<a
 							className={cn(
-								'block truncate text-sm transition-colors hover:text-foreground',
-								'text-muted-foreground',
+								'block truncate text-sm text-stone-500 transition-colors hover:text-accent-400',
 							)}
 							href={`#${id}`}
 							onClick={(e) => handleClick(e, id)}

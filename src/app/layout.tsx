@@ -3,11 +3,18 @@ import '@/styles/global.css';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import localFont from 'next/font/local';
 import type { ReactNode } from 'react';
 
-import { Footer, Header, ThemeProvider } from '@/components';
+import { ThemeProvider } from '@/components';
 import { cn } from '@/utils/cn';
+
+const inter = Inter({
+	subsets: ['latin'],
+	variable: '--font-inter',
+	display: 'swap',
+});
 
 const GmarketSans = localFont({
 	src: [
@@ -27,6 +34,7 @@ const GmarketSans = localFont({
 			weight: '700',
 		},
 	],
+	variable: '--font-gmarket',
 });
 
 export const metadata: Metadata = {
@@ -82,27 +90,17 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
 	return (
-		<html lang="ko" suppressHydrationWarning>
-			<body className={cn(GmarketSans.className)}>
+		<html lang="ko" className={cn('scroll-smooth')} suppressHydrationWarning>
+			<body className={cn(inter.variable, GmarketSans.variable, 'font-sans')}>
 				<SpeedInsights />
 				<Analytics />
 				<ThemeProvider
 					attribute="class"
-					defaultTheme="system"
+					defaultTheme="dark"
 					disableTransitionOnChange
 					enableSystem
 				>
-					<div className={cn('relative flex min-h-screen flex-col')}>
-						<Header />
-						<div
-							className={cn(
-								'mx-auto w-full max-w-7xl flex-1 px-4 sm:px-6 lg:px-8',
-							)}
-						>
-							{children}
-						</div>
-						<Footer />
-					</div>
+					{children}
 				</ThemeProvider>
 			</body>
 		</html>

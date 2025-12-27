@@ -56,7 +56,6 @@
 		"remark-toc": "^9.0.0",
 		"sharp": "0.33.5",
 		"tailwind-merge": "^2.6.0",
-		"tailwindcss": "^4.1.0",
 		"unified": "^11.0.5",
 		"uuid": "^9.0.1"
 	},
@@ -75,6 +74,7 @@
 		"glob": "^10.4.5",
 		"node-fetch": "^3.3.2",
 		"sass": "^1.93.2",
+		"tailwindcss": "^4.1.18",
 		"tailwindcss-content-visibility": "^0.2.0",
 		"tsconfig-paths-webpack-plugin": "^4.2.0",
 		"typescript": "5.6.2",

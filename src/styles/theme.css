@@ -20,6 +20,13 @@
 	--color-input: hsl(var(--input));
 	--color-ring: hsl(var(--ring));
 
+	/* Accent color scale (Warm Red / Deep Orange) */
+	--color-accent-200: #ffccbc;
+	--color-accent-300: #ffab91;
+	--color-accent-400: #ff7043;
+	--color-accent-500: #ff5722;
+	--color-accent-900: #bf360c;
+
 	/* Border Radius */
 	--radius-lg: var(--radius);
 	--radius-md: calc(var(--radius) - 2px);

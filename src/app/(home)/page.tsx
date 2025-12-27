@@ -1,12 +1,16 @@
-import { cn } from '@/utils/cn';
+import { PortfolioPage } from '@/components/portfolio';
+import { getAllPosts } from '@/services/post';
 
-import { IntroductionSection, RecentPostSection } from './components';
+export default async function Home() {
+	const posts = await getAllPosts();
 
-export default function Home() {
-	return (
-		<main className={cn('flex w-full flex-col items-center')}>
-			<IntroductionSection />
-			<RecentPostSection />
-		</main>
-	);
+	const formattedPosts = posts.slice(0, 5).map((post) => ({
+		slug: post.slug,
+		title: post.title,
+		description: post.description,
+		category: post.category,
+		createdTime: post.createdTime.format('YYYY-MM-DD'),
+	}));
+
+	return <PortfolioPage posts={formattedPosts} />;
 }
