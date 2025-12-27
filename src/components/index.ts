@@ -1,10 +1,7 @@
-export { default as Card } from './card';
-export { default as Carousel } from './carousel';
 export { default as Footer } from './footer';
 export { default as Header } from './header';
 export { default as ModeToggle } from './mode-toggle';
 export * from './portfolio';
-export { default as Section } from './section';
 export { default as ThemeProvider } from './theme-provider';
 export * from './ui/aspect-ratio';
 export * from './ui/avatar';
