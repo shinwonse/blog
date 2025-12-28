@@ -11,7 +11,7 @@ const ProjectCard = ({ data }: ProjectCardProps) => {
 		<div
 			className={cn(
 				'group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4',
-				'lg:hover:!opacity-100 lg:group-hover/list:opacity-50',
+				'lg:hover:opacity-100! lg:group-hover/list:opacity-50',
 			)}
 		>
 			<div
@@ -67,12 +67,12 @@ const ProjectCard = ({ data }: ProjectCardProps) => {
 					))}
 				</ul>
 			</div>
-			<div
-				className={cn(
-					'z-10 mt-1 text-xs font-semibold uppercase tracking-wide text-stone-500 sm:order-1 sm:col-span-2',
-				)}
-			>
-				<p>{data.period}</p>
+		<div
+			className={cn(
+				'z-10 mt-1 text-xs font-semibold uppercase tracking-wide text-stone-500 sm:order-1 sm:col-span-2',
+			)}
+		>
+			<p className="whitespace-nowrap">{data.period}</p>
 				<p className={cn('mt-1 font-normal text-stone-400')}>
 					{data.organization}
 				</p>

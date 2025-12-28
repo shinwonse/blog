@@ -54,7 +54,7 @@ const PortfolioPage = ({ posts }: PortfolioPageProps) => {
 					<Sidebar currentView={currentView} onViewChange={setCurrentView} />
 
 					{/* Right Column (Scrollable Content) */}
-					<main className={cn('pt-24 lg:w-1/2 lg:py-24')}>
+					<main className={cn('pt-24 lg:w-[55%] lg:py-24')}>
 						{currentView === 'home' && (
 							<>
 								{/* About Section */}
@@ -137,7 +137,7 @@ const PortfolioPage = ({ posts }: PortfolioPageProps) => {
 											</li>
 										))}
 									</ol>
-									<div className={cn('mt-12')}>
+									{/* <div className={cn('mt-12')}>
 										<a
 											className={cn(
 												'group/link inline-flex items-baseline text-base font-medium leading-tight text-stone-200',
@@ -150,7 +150,7 @@ const PortfolioPage = ({ posts }: PortfolioPageProps) => {
 												View Full Résumé <Icons.ArrowUpRight />
 											</span>
 										</a>
-									</div>
+									</div> */}
 								</section>
 
 								{/* Projects Section */}

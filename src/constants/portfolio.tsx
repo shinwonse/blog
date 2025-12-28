@@ -60,6 +60,24 @@ export const Icons = {
 			<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
 		</svg>
 	),
+	Instagram: () => (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width="20"
+			height="20"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth="2"
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			aria-hidden="true"
+		>
+			<rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+			<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+			<line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+		</svg>
+	),
 	ArrowUpRight: () => (
 		<svg
 			className="ml-1 inline-block transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 motion-reduce:transition-none"
@@ -81,7 +99,7 @@ export const Icons = {
 
 export const PROFILE: Profile = {
 	name: '신원세 (Wonse Shin)',
-	title: 'Frontend Engineer',
+	title: 'Product Engineer',
 	tagline: '사용자에게 가치를, 동료에게 영감을 주는 엔지니어',
 	email: 'sinwonse@gmail.com',
 	location: 'Seoul, Korea',
@@ -111,6 +129,11 @@ export const SOCIALS: Social[] = [
 		icon: <Icons.Linkedin />,
 	},
 	{ name: 'Email', url: `mailto:${PROFILE.email}`, icon: <Icons.Mail /> },
+	{
+		name: 'Instagram',
+		url: 'https://instagram.com/__wonse',
+		icon: <Icons.Instagram />,
+	},
 ];
 
 export const EXPERIENCE: Experience[] = [
@@ -119,24 +142,23 @@ export const EXPERIENCE: Experience[] = [
 		role: 'Product Engineer',
 		period: '2025. 07 — Present',
 		description:
-			"MAU 300만의 '모두가 매일 사용하는 초저가 커머스 플랫폼' 올웨이즈의 딜과 상품을 개발하고 있습니다. MD와 셀러들이 직관적이고 편한 플로우로 업무에만 집중할 수 있는 어드민 서비스를 개발합니다.",
-		skills: ['React', 'TypeScript', 'Next.js', 'GraphQL', 'Relay'],
-		links: [{ label: '올웨이즈 (Alwayz)', url: 'https://alwayz.co.kr' }],
+			"MAU 300만의 '모두가 매일 사용하는 초저가 커머스 플랫폼' 올웨이즈의 커머스 전면을 개발하고 있습니다. 유저가 올웨이즈에서 기분 좋은 경험을 할 수 있도록 매일 고군분투하고 있습니다.",
+		skills: ['React', 'TypeScript', 'GraphQL', 'Relay'],
+		links: [{ label: '올웨이즈 (Alwayz)', url: 'https://alwayz.co/' }],
 	},
 	{
 		company: '주식회사 케이타운포유 (Ktown4u)',
-		role: 'System Development / Manager',
+		role: 'Frontend Engineer',
 		period: '2023. 03 — 2025. 07',
 		description:
-			'글로벌 팬을 대상으로 하는 MAU 400만의 K-POP 이커머스 플랫폼에서 새로운 기능을 추가하고, 백오피스 스쿼드에서 내부 직원들의 업무 효율화를 위한 기능을 개발했습니다. 프론트엔드 개발팀의 개발 생산성을 높이기 위한 DX 개선 프로젝트에도 참여하였습니다.',
+			'글로벌 팬을 대상으로 하는 MAU 400만의 K-Pop 역직구 이커머스 플랫폼에서 K-Culture를 전세계로 전파하였습니다.',
 		skills: [
 			'React',
-			'Next.js',
 			'TypeScript',
-			'Monorepo',
-			'Vitest',
-			'Playwright',
+			'Next.js',
+			'GraphQL',
 		],
+		links: [{ label: 'K-Pop 역직구 이커머스 플랫폼 (Ktown4u)', url: 'https://www.ktown4u.com/' }],
 	},
 ];
 
@@ -151,11 +173,11 @@ export const PROJECTS: Project[] = [
 			'GraphQL과 Relay를 활용하여 네트워크 리소스를 최적화.',
 			'결과적으로 새로운 딜 이벤트 오픈 시간을 3~4일로 획기적으로 단축.',
 		],
-		technologies: ['React', 'GraphQL', 'Relay', 'GrowthBook'],
+		technologies: ['React', 'TypeScript', 'GraphQL', 'Relay'],
 	},
 	{
 		title: '상품 관리 구조 개선 (백오피스)',
-		period: '2024. 08 — 진행 중',
+		period: '2024. 08 — 2025. 07',
 		organization: '케이타운포유',
 		description: [
 			'기존 C# 레거시 백오피스 툴을 React와 GraphQL 기반으로 재개발하여 유지보수성 향상.',
@@ -165,16 +187,26 @@ export const PROJECTS: Project[] = [
 		technologies: ['React', 'GraphQL', 'Formik', 'MUI'],
 	},
 	{
-		title: '기술 블로그 & 포트폴리오 개발',
-		period: '2024. 01 — 진행 중',
+		title: '개인 블로그',
+		period: '상시 개발 중',
 		organization: '개인',
 		description: [
 			'Notion API와 Next.js를 사용하여 Notion에 작성한 글을 정적 사이트로 렌더링.',
 			'Notion 이미지 링크 만료 이슈 해결을 위해 Supabase 스토리지 연동.',
-			'SEO 최적화 및 다크모드 지원.',
 		],
-		technologies: ['Next.js', 'Notion API', 'Supabase', 'Tailwind CSS'],
+		technologies: ['React', 'TypeScript', 'Next.js', 'Notion API', 'Supabase'],
 		link: 'https://wonse.dev',
+	},
+	{
+		title: '사회인야구팀 담장 NUMUGAS',
+		period: '상시 개발 중',
+		organization: '개인',
+		description: [
+			'사회인야구 기록 서비스 게임원의 데이터를 Supabase에 동기화하여 데이터 업데이트',
+			'Next.js를 기반으로 빠른 성능의 정적 페이지 서빙',
+		],
+		technologies: ['React', 'TypeScript', 'Next.js', 'Supabase'],
+		link: 'https://numugas.com',
 	},
 ];
 

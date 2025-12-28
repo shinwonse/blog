@@ -11,7 +11,7 @@ const ExperienceCard = ({ data }: ExperienceCardProps) => {
 		<div
 			className={cn(
 				'group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4',
-				'lg:hover:!opacity-100 lg:group-hover/list:opacity-50',
+				'lg:hover:opacity-100! lg:group-hover/list:opacity-50',
 			)}
 		>
 			<div
@@ -21,14 +21,14 @@ const ExperienceCard = ({ data }: ExperienceCardProps) => {
 					'lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg',
 				)}
 			/>
-			<header
-				className={cn(
-					'z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-stone-500 sm:col-span-2',
-				)}
-				aria-label={data.period}
-			>
-				{data.period}
-			</header>
+<header
+			className={cn(
+				'z-10 mb-2 mt-1 whitespace-nowrap text-xs font-semibold uppercase tracking-wide text-stone-500 sm:col-span-2',
+			)}
+			aria-label={data.period}
+		>
+			{data.period}
+		</header>
 			<div className={cn('z-10 sm:col-span-6')}>
 				<h3 className={cn('font-medium leading-snug text-stone-200')}>
 					<div>
