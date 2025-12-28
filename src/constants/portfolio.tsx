@@ -106,7 +106,17 @@ export const PROFILE: Profile = {
 	avatar: '/profile.png',
 	about: `안녕하세요. 좋은 코드란 비즈니스의 문제를 해결하고 수익을 창출하는 코드라고 생각하는 소프트웨어 엔지니어 신원세입니다. K-POP 기반 이커머스 플랫폼을 시작으로 커리어를 시작하여 현재는 레브잇에서 '모두가 매일 사용하는 초저가 커머스 플랫폼'을 만들고 있습니다.
 
-단순히 기능 구현에 그치지 않고, 복잡한 문제를 직관적인 UI/UX로 풀어내는 과정에서 즐거움을 느낍니다. 최근에는 React Server Components와 같은 최신 기술을 프로덕션 레벨에 안정적으로 도입하는 방법론에 대해 고민하고 글을 쓰고 있습니다.`,
+단순히 기능 구현에 그치지 않고, 복잡한 문제를 직관적인 UI/UX로 풀어내는 과정에서 즐거움을 느낍니다.`,
+	aboutExtra: (
+		<>
+			평소에는 <span className="font-medium text-stone-200">TypeScript</span>와{' '}
+			<span className="font-medium text-stone-200">React</span> 생태계에 깊은
+			관심을 가지고 있으며, 단순한 기능 구현을 넘어{' '}
+			<span className="font-medium text-stone-200">DX(개발자 경험)</span>와{' '}
+			<span className="font-medium text-stone-200">UX(사용자 경험)</span> 모두를
+			개선하는 것에 몰입합니다.
+		</>
+	),
 };
 
 export const NAV_ITEMS: NavItem[] = [

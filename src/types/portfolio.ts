@@ -44,5 +44,6 @@ export interface Profile {
 	location: string;
 	avatar?: string;
 	about: string;
+	aboutExtra?: ReactNode;
 }
 

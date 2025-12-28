@@ -85,26 +85,7 @@ const PortfolioPage = ({ posts }: PortfolioPageProps) => {
 										)}
 									>
 										<p className={cn('mb-4')}>{PROFILE.about}</p>
-										<p>
-											평소에는{' '}
-											<span className={cn('font-medium text-stone-200')}>
-												TypeScript
-											</span>
-											와{' '}
-											<span className={cn('font-medium text-stone-200')}>
-												React
-											</span>{' '}
-											생태계에 깊은 관심을 가지고 있으며, 단순한 기능 구현을
-											넘어{' '}
-											<span className={cn('font-medium text-stone-200')}>
-												DX(개발자 경험)
-											</span>
-											와{' '}
-											<span className={cn('font-medium text-stone-200')}>
-												UX(사용자 경험)
-											</span>{' '}
-											모두를 개선하는 것에 몰입합니다.
-										</p>
+										<p>{PROFILE.aboutExtra}</p>
 									</div>
 								</section>
 
