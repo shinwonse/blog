@@ -157,6 +157,33 @@ const Sidebar = ({ currentView, onViewChange }: SidebarProps) => {
 					{PROFILE.tagline}
 				</p>
 
+				{/* Mobile Navigation */}
+				<nav
+					className={cn('mt-8 lg:hidden')}
+					aria-label="Mobile navigation"
+				>
+					<ul className={cn('flex flex-wrap gap-2')}>
+						{NAV_ITEMS.map((item) => (
+							<li key={item.id}>
+								<a
+									className={cn(
+										'inline-flex items-center rounded-full border border-stone-700 px-4 py-2 text-xs font-medium uppercase tracking-wider transition-all',
+										'hover:border-stone-500 hover:text-stone-200',
+										activeSection === item.id
+											? 'border-accent-500 bg-accent-500/10 text-stone-200'
+											: 'text-stone-500',
+									)}
+									href={item.isPage ? `/${item.id}` : `#${item.id}`}
+									onClick={(e) => handleClick(e, item)}
+								>
+									{item.label}
+								</a>
+							</li>
+						))}
+					</ul>
+				</nav>
+
+				{/* Desktop Navigation */}
 				<nav
 					className={cn('nav hidden lg:block')}
 					aria-label="In-page jump links"
