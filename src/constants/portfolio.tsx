@@ -109,7 +109,7 @@ export const PROFILE: Profile = {
 단순히 기능 구현에 그치지 않고, 복잡한 문제를 직관적인 UI/UX로 풀어내는 과정에서 즐거움을 느낍니다.`,
 	aboutExtra: (
 		<>
-			평소에는 <span className="font-medium text-stone-200">TypeScript</span>와{' '}
+			<span className="font-medium text-stone-200">TypeScript</span>와{' '}
 			<span className="font-medium text-stone-200">React</span> 생태계에 깊은
 			관심을 가지고 있으며, 단순한 기능 구현을 넘어{' '}
 			<span className="font-medium text-stone-200">DX(개발자 경험)</span>와{' '}
