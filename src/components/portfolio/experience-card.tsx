@@ -32,28 +32,34 @@ const ExperienceCard = ({ data }: ExperienceCardProps) => {
 			<div className={cn('z-10 sm:col-span-6')}>
 				<h3 className={cn('font-medium leading-snug text-stone-200')}>
 					<div>
-						<a
-							className={cn(
-								'group/link inline-flex items-baseline text-base font-medium leading-tight text-stone-200',
-								'hover:text-accent-400 focus-visible:text-accent-400',
-							)}
-							href={data.links?.[0]?.url || '#'}
-							target={data.links ? '_blank' : '_self'}
-							rel="noreferrer"
-							aria-label={`${data.role} at ${data.company}`}
-						>
-							<span
+						{data.links?.[0]?.url ? (
+							<a
 								className={cn(
-									'absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block',
+									'group/link inline-flex items-baseline text-base font-medium leading-tight text-stone-200',
+									'hover:text-accent-400 focus-visible:text-accent-400',
 								)}
-							/>
-							<span>
-								{data.role} ·{' '}
-								<span className={cn('inline-block')}>
-									{data.company} <Icons.ArrowUpRight />
+								href={data.links[0].url}
+								target="_blank"
+								rel="noreferrer"
+								aria-label={`${data.role} at ${data.company}`}
+							>
+								<span
+									className={cn(
+										'absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block',
+									)}
+								/>
+								<span>
+									{data.role} ·{' '}
+									<span className={cn('inline-block')}>
+										{data.company} <Icons.ArrowUpRight />
+									</span>
 								</span>
+							</a>
+						) : (
+							<span className={cn('text-base font-medium leading-tight text-stone-200')}>
+								{data.role} · {data.company}
 							</span>
-						</a>
+						)}
 					</div>
 				</h3>
 				<p className={cn('mt-2 text-sm leading-normal')}>{data.description}</p>

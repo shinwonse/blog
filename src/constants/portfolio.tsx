@@ -78,6 +78,23 @@ export const Icons = {
 			<line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
 		</svg>
 	),
+	NaverBlog: () => (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width="20"
+			height="20"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth="2"
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			aria-hidden="true"
+		>
+			<rect x="2" y="2" width="20" height="20" rx="3" ry="3" />
+			<path d="M8 7v10M8 7l8 10M16 7v10" />
+		</svg>
+	),
 	ArrowUpRight: () => (
 		<svg
 			className="ml-1 inline-block transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 motion-reduce:transition-none"
@@ -143,6 +160,11 @@ export const SOCIALS: Social[] = [
 		name: 'Instagram',
 		url: 'https://instagram.com/__wonse',
 		icon: <Icons.Instagram />,
+	},
+	{
+		name: 'Naver Blog',
+		url: 'https://blog.naver.com/wonse-',
+		icon: <Icons.NaverBlog />,
 	},
 ];
 

@@ -23,25 +23,31 @@ const ProjectCard = ({ data }: ProjectCardProps) => {
 			/>
 			<div className={cn('z-10 sm:order-2 sm:col-span-6')}>
 				<h3>
-					<a
-						className={cn(
-							'group/link inline-flex items-baseline text-base font-medium leading-tight text-stone-200',
-							'hover:text-accent-400 focus-visible:text-accent-400',
-						)}
-						href={data.link || '#'}
-						target="_blank"
-						rel="noreferrer"
-						aria-label={data.title}
-					>
-						<span
+					{data.link ? (
+						<a
 							className={cn(
-								'absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block',
+								'group/link inline-flex items-baseline text-base font-medium leading-tight text-stone-200',
+								'hover:text-accent-400 focus-visible:text-accent-400',
 							)}
-						/>
-						<span>
-							{data.title} <Icons.ArrowUpRight />
+							href={data.link}
+							target="_blank"
+							rel="noreferrer"
+							aria-label={data.title}
+						>
+							<span
+								className={cn(
+									'absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block',
+								)}
+							/>
+							<span>
+								{data.title} <Icons.ArrowUpRight />
+							</span>
+						</a>
+					) : (
+						<span className={cn('text-base font-medium leading-tight text-stone-200')}>
+							{data.title}
 						</span>
-					</a>
+					)}
 				</h3>
 				<div className={cn('mt-2 text-sm leading-normal text-stone-400')}>
 					<ul className={cn('list-disc space-y-1 pl-4')}>
