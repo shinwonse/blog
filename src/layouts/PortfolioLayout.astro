@@ -11,15 +11,23 @@ const { title, description, ogImage } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} ogImage={ogImage}>
-  <div class="portfolio-theme relative min-h-screen bg-stone-900 leading-relaxed text-stone-400 antialiased">
+  <div
+    class="portfolio-theme relative min-h-screen bg-stone-900 leading-relaxed text-stone-400 antialiased"
+  >
     <!-- Mouse flashlight effect -->
-    <div id="mouse-flashlight" class="pointer-events-none fixed inset-0 z-30 transition duration-300"></div>
+    <div
+      id="mouse-flashlight"
+      class="pointer-events-none fixed inset-0 z-30 transition duration-300"
+    >
+    </div>
 
     <!-- Noise overlay -->
     <div class="noise-overlay"></div>
 
     <!-- Main content -->
-    <div class="mx-auto min-h-screen max-w-7xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0">
+    <div
+      class="mx-auto min-h-screen max-w-7xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0"
+    >
       <slot />
     </div>
   </div>

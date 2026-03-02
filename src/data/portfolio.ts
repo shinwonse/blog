@@ -178,10 +178,10 @@ export const PROJECTS: Project[] = [
     period: '상시 개발 중',
     organization: '개인',
     description: [
-      'Notion API와 Next.js App Router를 활용하여 Notion에 작성한 글을 정적 웹사이트로 렌더링.',
-      'Notion 이미지 링크 만료 문제를 해결하기 위해 파싱 중 이미지를 발견하면 Supabase로 자동 업로드 처리.',
+      'Astro와 MDX Content Collections를 활용하여 로컬 MDX 파일 기반의 정적 블로그 구축.',
+      'Islands Architecture로 필요한 곳에만 React를 hydration하여 제로 JS 기본 원칙을 유지하고, Tailwind CSS v4와 커스텀 rehype 플러그인으로 한국어 친화적인 콘텐츠 파이프라인 구성.',
     ],
-    technologies: ['React', 'TypeScript', 'Next.js', 'Notion API', 'Supabase'],
+    technologies: ['Astro', 'React', 'TypeScript', 'MDX', 'Tailwind CSS'],
     link: 'https://wonse.dev',
   },
 ];
