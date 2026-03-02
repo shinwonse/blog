@@ -1,0 +1,137 @@
+---
+import PortfolioLayout from '@/layouts/PortfolioLayout.astro';
+import Sidebar from '@/components/portfolio/Sidebar.astro';
+import ExperienceCard from '@/components/portfolio/ExperienceCard.astro';
+import ProjectCard from '@/components/portfolio/ProjectCard.astro';
+import { PROFILE, EXPERIENCE, PROJECTS, WRITING } from '@/data/portfolio';
+---
+
+<PortfolioLayout
+  title="신원세 (Wonse Shin) — Product Engineer"
+  description={PROFILE.tagline}
+>
+  <div class="lg:flex lg:justify-between lg:gap-4">
+    <!-- Left Column (Sticky Sidebar) -->
+    <Sidebar />
+
+    <!-- Right Column (Scrollable Content) -->
+    <main class="pt-24 lg:w-[55%] lg:py-24">
+
+      <!-- About Section -->
+      <section
+        id="about"
+        class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
+        aria-label="About me"
+      >
+        <div
+          class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-stone-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0"
+        >
+          <h2 class="text-sm font-bold uppercase tracking-widest text-stone-200 lg:sr-only">
+            About
+          </h2>
+        </div>
+        <div class="whitespace-pre-line text-base text-stone-400">
+          <p class="mb-4">{PROFILE.about}</p>
+          <p>
+            <span class="font-medium text-stone-200">TypeScript</span>와{' '}
+            <span class="font-medium text-stone-200">React</span> 생태계에 깊은
+            관심을 가지고 있으며, 단순한 기능 구현을 넘어{' '}
+            <span class="font-medium text-stone-200">DX(개발자 경험)</span>와{' '}
+            <span class="font-medium text-stone-200">UX(사용자 경험)</span> 모두를
+            개선하는 것에 몰입합니다.
+          </p>
+        </div>
+      </section>
+
+      <!-- Experience Section -->
+      <section
+        id="experience"
+        class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
+        aria-label="Work experience"
+      >
+        <div
+          class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-stone-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0"
+        >
+          <h2 class="text-sm font-bold uppercase tracking-widest text-stone-200 lg:sr-only">
+            Experience
+          </h2>
+        </div>
+        <ol class="group/list">
+          {EXPERIENCE.map((exp) => (
+            <li class="mb-12">
+              <ExperienceCard data={exp} />
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <!-- Projects Section -->
+      <section
+        id="projects"
+        class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
+        aria-label="Selected projects"
+      >
+        <div
+          class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-stone-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0"
+        >
+          <h2 class="text-sm font-bold uppercase tracking-widest text-stone-200 lg:sr-only">
+            Projects
+          </h2>
+        </div>
+        <ul class="group/list">
+          {PROJECTS.map((project) => (
+            <li class="mb-12">
+              <ProjectCard data={project} />
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <!-- Writing / Activities Section -->
+      <section
+        id="writing"
+        class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
+        aria-label="Writing and Activities"
+      >
+        <div
+          class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-stone-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0"
+        >
+          <h2 class="text-sm font-bold uppercase tracking-widest text-stone-200 lg:sr-only">
+            Activity
+          </h2>
+        </div>
+        <ul class="group/list">
+          {WRITING.map((item) => (
+            <li class="mb-12">
+              <div
+                class="group relative grid grid-cols-8 gap-4 transition-all sm:items-center sm:gap-8 md:gap-4 lg:hover:opacity-100! lg:group-hover/list:opacity-50"
+              >
+                <div
+                  class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-stone-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"
+                />
+                <div class="z-10 col-span-2 text-xs font-semibold uppercase tracking-wide text-stone-500 sm:col-span-2">
+                  {item.year}
+                </div>
+                <div class="z-10 col-span-6 sm:col-span-6">
+                  <h3 class="font-medium leading-snug text-stone-200">
+                    <span
+                      class="group/link inline-flex items-baseline text-base font-medium leading-tight text-stone-200 hover:text-accent-400 focus-visible:text-accent-400"
+                    >
+                      <span
+                        class="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"
+                      />
+                      {item.title}
+                    </span>
+                  </h3>
+                  <p class="mt-2 text-sm leading-normal">{item.description}</p>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <footer class="max-w-md pb-16 text-sm text-stone-500 sm:pb-0" />
+    </main>
+  </div>
+</PortfolioLayout>

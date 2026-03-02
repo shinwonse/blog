@@ -1,0 +1,30 @@
+---
+interface Props {
+  url: string;
+  title: string;
+  description?: string;
+  image?: string;
+  favicon?: string;
+  domain?: string;
+}
+const { url, title, description, image, favicon, domain } = Astro.props;
+---
+<div class="bookmark-card">
+  <a href={url} target="_blank" rel="noopener noreferrer" class="bookmark-link">
+    <div class="bookmark-content">
+      <div class="bookmark-info">
+        <div class="bookmark-title">{title}</div>
+        {description && <div class="bookmark-description">{description}</div>}
+        <div class="bookmark-domain">
+          {favicon && <img src={favicon} alt="" class="bookmark-favicon" width="16" height="16" />}
+          {domain}
+        </div>
+      </div>
+      {image && (
+        <div class="bookmark-thumbnail">
+          <img src={image} alt={title} class="bookmark-image" />
+        </div>
+      )}
+    </div>
+  </a>
+</div>

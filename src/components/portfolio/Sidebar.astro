@@ -1,0 +1,199 @@
+---
+import { PROFILE, NAV_ITEMS, SOCIALS } from '@/data/portfolio';
+import SocialIcon from '@/components/icons/SocialIcon.astro';
+---
+
+<header
+  class="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24"
+>
+  <div>
+    <div class="mb-4 flex items-center gap-4">
+      {PROFILE.avatar && (
+        <div
+          class="relative h-16 w-16 overflow-hidden rounded-full border-2 border-stone-700 shadow-xl shadow-accent-500/20"
+        >
+          <img
+            src={PROFILE.avatar}
+            alt={PROFILE.name}
+            class="h-full w-full object-cover opacity-90 transition-transform duration-500 hover:scale-110"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-tr from-accent-500/20 to-transparent"
+          />
+        </div>
+      )}
+    </div>
+
+    <h1 class="text-4xl font-bold tracking-tight text-stone-100 sm:text-5xl">
+      <a href="/">{PROFILE.name}</a>
+    </h1>
+    <h2 class="mt-3 text-lg font-medium tracking-tight text-stone-100 sm:text-xl">
+      {PROFILE.title}
+    </h2>
+    <p class="mt-4 max-w-xs leading-normal text-stone-400">
+      {PROFILE.tagline}
+    </p>
+
+    <!-- Mobile Navigation -->
+    <nav class="mt-8 lg:hidden" aria-label="Mobile navigation">
+      <ul class="flex flex-wrap gap-2">
+        {NAV_ITEMS.map((item) => (
+          <li>
+            <a
+              class="mobile-nav-link inline-flex items-center rounded-full border border-stone-700 px-4 py-2 text-xs font-medium uppercase tracking-wider transition-all hover:border-stone-500 hover:text-stone-200 text-stone-500"
+              href={item.isPage ? `/posts` : `#${item.id}`}
+              data-nav-id={item.id}
+              data-is-page={item.isPage ? 'true' : 'false'}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- Desktop Navigation -->
+    <nav class="nav hidden lg:block" aria-label="In-page jump links">
+      <ul class="mt-16 w-max">
+        {NAV_ITEMS.map((item) => (
+          <li>
+            <a
+              class="desktop-nav-link group flex items-center py-3"
+              href={item.isPage ? `/posts` : `#${item.id}`}
+              data-nav-id={item.id}
+              data-is-page={item.isPage ? 'true' : 'false'}
+            >
+              <span
+                class="nav-indicator mr-4 h-px w-8 bg-stone-600 transition-all group-hover:w-16 group-hover:bg-stone-200"
+              />
+              <span
+                class="nav-text text-xs font-bold uppercase tracking-widest text-stone-500 group-hover:text-stone-200"
+              >
+                {item.label}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+
+  <ul class="ml-1 mt-8 flex items-center" aria-label="Social media">
+    {SOCIALS.map((social) => (
+      <li class="mr-5 text-xs">
+        <a
+          class="block hover:text-stone-100"
+          href={social.url}
+          target="_blank"
+          rel="noreferrer noopener"
+          aria-label={`${social.name} (opens in a new tab)`}
+          title={social.name}
+        >
+          <span class="sr-only">{social.name}</span>
+          <SocialIcon name={social.iconName} />
+        </a>
+      </li>
+    ))}
+  </ul>
+</header>
+
+<script>
+  function initSidebar() {
+    const NAV_IDS = ['about', 'experience', 'projects', 'writing'];
+    let activeSection = 'about';
+
+    function setActiveSection(id: string) {
+      activeSection = id;
+
+      // Mobile nav links
+      document.querySelectorAll<HTMLAnchorElement>('.mobile-nav-link').forEach((link) => {
+        const navId = link.dataset.navId;
+        if (navId === id) {
+          link.classList.add('border-accent-500', 'bg-accent-500/10', 'text-stone-200');
+          link.classList.remove('text-stone-500');
+        } else {
+          link.classList.remove('border-accent-500', 'bg-accent-500/10', 'text-stone-200');
+          link.classList.add('text-stone-500');
+        }
+      });
+
+      // Desktop nav links
+      document.querySelectorAll<HTMLAnchorElement>('.desktop-nav-link').forEach((link) => {
+        const navId = link.dataset.navId;
+        const indicator = link.querySelector<HTMLSpanElement>('.nav-indicator');
+        const text = link.querySelector<HTMLSpanElement>('.nav-text');
+
+        if (navId === id) {
+          if (indicator) {
+            indicator.classList.add('w-16', 'bg-stone-200');
+            indicator.classList.remove('w-8', 'bg-stone-600');
+          }
+          if (text) {
+            text.classList.add('text-stone-200');
+            text.classList.remove('text-stone-500');
+          }
+        } else {
+          if (indicator) {
+            indicator.classList.remove('w-16', 'bg-stone-200');
+            indicator.classList.add('w-8', 'bg-stone-600');
+          }
+          if (text) {
+            text.classList.remove('text-stone-200');
+            text.classList.add('text-stone-500');
+          }
+        }
+      });
+    }
+
+    function handleScroll() {
+      const sections = NAV_IDS.map((id) => {
+        const el = document.getElementById(id);
+        return el
+          ? { id, offsetTop: el.offsetTop, offsetHeight: el.offsetHeight }
+          : null;
+      }).filter((s): s is { id: string; offsetTop: number; offsetHeight: number } => s !== null);
+
+      const SCROLL_OFFSET = 200;
+      const scrollPosition = window.scrollY + SCROLL_OFFSET;
+
+      for (const section of sections) {
+        const top = section.offsetTop;
+        const bottom = top + section.offsetHeight;
+        if (scrollPosition >= top && scrollPosition < bottom) {
+          setActiveSection(section.id);
+          break;
+        }
+      }
+
+      const BOTTOM_THRESHOLD = 50;
+      if (
+        window.innerHeight + window.scrollY >=
+        document.body.offsetHeight - BOTTOM_THRESHOLD
+      ) {
+        if (sections.length > 0) {
+          setActiveSection(sections[sections.length - 1].id);
+        }
+      }
+    }
+
+    // Smooth scroll click handlers
+    document.querySelectorAll<HTMLAnchorElement>('.mobile-nav-link, .desktop-nav-link').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        const isPage = link.dataset.isPage === 'true';
+        if (!isPage) {
+          e.preventDefault();
+          const navId = link.dataset.navId;
+          if (navId) {
+            const el = document.getElementById(navId);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+  }
+
+  document.addEventListener('astro:page-load', initSidebar);
+</script>

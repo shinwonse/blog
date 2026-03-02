@@ -1,0 +1,46 @@
+---
+import type { TOCItem } from '@/utils/extractTOC';
+
+interface Props {
+  toc: TOCItem[];
+}
+
+const { toc } = Astro.props;
+---
+
+{toc.length > 0 && (
+  <nav class="my-8 rounded-xl border border-stone-700/50 bg-stone-800/30 p-6">
+    <h2 class="mb-4 text-sm font-semibold uppercase tracking-wider text-stone-400">
+      목차
+    </h2>
+    <ul class="space-y-2">
+      {toc.map(({ id, tagName, text }) => (
+        <li
+          class:list={[
+            'w-full',
+            tagName === 'h2' && 'pl-0',
+            tagName === 'h3' && 'pl-4',
+            tagName === 'h4' && 'pl-8',
+          ]}
+        >
+          <a
+            class="toc-link block truncate text-sm text-stone-500 transition-colors hover:text-accent-400"
+            href={`#${id}`}
+          >
+            {text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}
+
+<script>
+  document.querySelectorAll('.toc-link').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+      if (href) document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>

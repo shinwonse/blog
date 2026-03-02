@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="ko" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro v5.18.0"><title>Astro로 블로그를 마이그레이션한 이유 | Wonse Shin</title><meta name="description" content="Next.js에서 Astro로 블로그를 전환하며 느낀 점들을 정리합니다."><meta name="robots" content="index, follow"><!-- OpenGraph --><meta property="og:type" content="website"><meta property="og:locale" content="ko_KR"><meta property="og:url" content="https://wonse.dev/posts/hello-astro/"><meta property="og:title" content="Astro로 블로그를 마이그레이션한 이유 | Wonse Shin"><meta property="og:description" content="Next.js에서 Astro로 블로그를 전환하며 느낀 점들을 정리합니다."><meta property="og:site_name" content="Wonse Shin"><meta property="og:image" content="https://wonse.dev/og-image.png"><!-- Twitter --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Astro로 블로그를 마이그레이션한 이유 | Wonse Shin"><meta name="twitter:description" content="Next.js에서 Astro로 블로그를 전환하며 느낀 점들을 정리합니다."><meta name="twitter:image" content="https://wonse.dev/og-image.png"><!-- Theme init: prevents FOUC by applying dark class before paint --><script>
+      (function () {
+        try {
+          var theme = localStorage.getItem('theme');
+          if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/_astro/index.DVrB1-DT.css">
+<link rel="stylesheet" href="/_astro/_slug_.B-Q435LF.css"></head> <body class="font-sans">  <div class="portfolio-theme relative min-h-screen bg-stone-900 leading-relaxed text-stone-400 antialiased"> <!-- Mouse flashlight effect --> <div id="mouse-flashlight" class="pointer-events-none fixed inset-0 z-30 transition duration-300"></div> <!-- Noise overlay --> <div class="noise-overlay"></div> <!-- Main content --> <div class="mx-auto min-h-screen max-w-7xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0">  <main class="flex w-full flex-col items-center"> <article class="w-full max-w-3xl"> <a class="group/link mb-8 inline-flex items-baseline text-sm font-medium text-stone-400 hover:text-accent-400" href="/posts">
+← Back to Posts
+</a> <header class="mb-12 flex flex-col gap-6 border-b border-stone-700/40 pb-8"> <div class="flex flex-row flex-wrap gap-2"> <span class="rounded-full bg-accent-500/20 px-3 py-1 text-xs font-semibold text-accent-300"> Astro </span><span class="rounded-full bg-accent-500/20 px-3 py-1 text-xs font-semibold text-accent-300"> 블로그 </span> </div> <h1 class="text-3xl font-bold leading-tight tracking-tight text-balance text-stone-100 sm:text-4xl lg:text-5xl"> Astro로 블로그를 마이그레이션한 이유 </h1> <p class="text-lg leading-relaxed text-stone-400"> Next.js에서 Astro로 블로그를 전환하며 느낀 점들을 정리합니다. </p> <time class="text-sm text-stone-500">2026년 03월 02일</time> </header> <nav class="my-8 rounded-xl border border-stone-700/50 bg-stone-800/30 p-6"><h2 class="mb-4 text-sm font-semibold uppercase tracking-wider text-stone-400">
+목차
+</h2><ul class="space-y-2"><li class="w-full pl-0"><a class="toc-link block truncate text-sm text-stone-500 transition-colors hover:text-accent-400" href="#왜-astro인가">왜 Astro인가</a></li><li class="w-full pl-4"><a class="toc-link block truncate text-sm text-stone-500 transition-colors hover:text-accent-400" href="#왜-astro인가-astro의-장점">Astro의 장점</a></li><li class="w-full pl-0"><a class="toc-link block truncate text-sm text-stone-500 transition-colors hover:text-accent-400" href="#코드-예시">코드 예시</a></li><li class="w-full pl-4"><a class="toc-link block truncate text-sm text-stone-500 transition-colors hover:text-accent-400" href="#코드-예시-마이그레이션-과정">마이그레이션 과정</a></li><li class="w-full pl-0"><a class="toc-link block truncate text-sm text-stone-500 transition-colors hover:text-accent-400" href="#결론">결론</a></li></ul></nav><script type="module">document.querySelectorAll(".toc-link").forEach(r=>{r.addEventListener("click",e=>{e.preventDefault();const t=e.currentTarget.getAttribute("href");t&&document.querySelector(t)?.scrollIntoView({behavior:"smooth"})})});</script> <div id="post" class="prose prose-lg prose-invert max-w-none prose-headings:text-stone-200 prose-p:text-stone-400 prose-a:text-accent-400 prose-strong:text-stone-200 prose-code:text-accent-300 prose-pre:bg-stone-800/50 prose-pre:border prose-pre:border-stone-700/50"> <h2 id="왜-astro인가">왜 Astro인가</h2>
+<p>기존 블로그는 <strong>Next.js</strong>와 <strong>Notion CMS</strong>를 사용하고 있었습니다. 잘 동작했지만 몇 가지 불편한 점이 있었습니다.</p>
+<ul>
+<li>Notion 이미지 URL이 1시간 후 만료됨</li>
+<li>API 속도 제한 (3 req/s)</li>
+<li>마크다운 변환 파이프라인이 복잡함</li>
+</ul>
+<h3 id="왜-astro인가-astro의-장점">Astro의 장점</h3>
+<p>Astro는 콘텐츠 중심 사이트에 최적화된 프레임워크입니다.</p>
+<ol>
+<li><strong>제로 JS 기본</strong> — 필요한 곳에만 JavaScript를 로드</li>
+<li><strong>Content Collections</strong> — Zod 스키마로 타입 안전한 콘텐츠 관리</li>
+<li><strong>MDX 지원</strong> — 마크다운 안에서 컴포넌트 사용 가능</li>
+</ol>
+<h2 id="코드-예시">코드 예시</h2>
+<pre><code class="hljs language-typescript"><span class="hljs-comment">// Astro Content Collections 정의</span>
+<span class="hljs-keyword">import</span> { defineCollection, z } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;astro:content&#39;</span>;
+
+<span class="hljs-keyword">const</span> posts = <span class="hljs-title function_">defineCollection</span>({
+  <span class="hljs-attr">schema</span>: z.<span class="hljs-title function_">object</span>({
+    <span class="hljs-attr">title</span>: z.<span class="hljs-title function_">string</span>(),
+    <span class="hljs-attr">description</span>: z.<span class="hljs-title function_">string</span>().<span class="hljs-title function_">optional</span>(),
+    <span class="hljs-attr">categories</span>: z.<span class="hljs-title function_">array</span>(z.<span class="hljs-title function_">object</span>({
+      <span class="hljs-attr">name</span>: z.<span class="hljs-title function_">string</span>(),
+      <span class="hljs-attr">color</span>: z.<span class="hljs-title function_">string</span>(),
+    })),
+  }),
+});
+</code></pre>
+<h3 id="코드-예시-마이그레이션-과정">마이그레이션 과정</h3>
+<p>기존 Next.js 프로젝트에서 Astro로의 전환은 생각보다 수월했습니다.</p>
+<ul>
+<li>Tailwind CSS는 그대로 사용</li>
+<li>rehype/remark 플러그인도 호환</li>
+<li>React 컴포넌트는 <strong>Islands Architecture</strong>로 필요한 곳에만 사용</li>
+</ul>
+<h2 id="결론">결론</h2>
+<p>콘텐츠 중심 사이트라면 Astro를 적극 추천합니다. 빌드 속도, 번들 크기, 개발자 경험 모두 만족스럽습니다.</p> </div> <section id="giscus-container" class="mt-16 border-t border-stone-700/50 pt-8"></section> <script type="module">function a(){const e=document.getElementById("giscus-container");if(!e||e.hasChildNodes())return;const t=document.createElement("script");t.src="https://giscus.app/client.js",t.async=!0,t.crossOrigin="anonymous",t.setAttribute("data-repo","shinwonse/blog"),t.setAttribute("data-repo-id","R_kgDOKRZdKg"),t.setAttribute("data-category","Comments"),t.setAttribute("data-category-id","DIC_kwDOKRZdKs4Clwh7"),t.setAttribute("data-mapping","pathname"),t.setAttribute("data-strict","0"),t.setAttribute("data-reactions-enabled","1"),t.setAttribute("data-emit-metadata","0"),t.setAttribute("data-input-position","bottom"),t.setAttribute("data-theme","dark"),t.setAttribute("data-lang","ko"),e.appendChild(t)}document.addEventListener("astro:page-load",a);</script> </article> </main>  </div> </div>  <!-- Vercel Analytics --> <script defer src="/_vercel/insights/script.js"></script> <!-- Vercel Speed Insights --> <script defer src="/_vercel/speed-insights/script.js"></script> </body> </html> <script type="module">const e=document.getElementById("mouse-flashlight");e&&document.addEventListener("mousemove",t=>{e.style.background=`radial-gradient(600px at ${t.clientX}px ${t.clientY}px, rgba(255, 112, 67, 0.08), transparent 80%)`});</script>

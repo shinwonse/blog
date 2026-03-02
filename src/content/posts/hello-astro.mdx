@@ -1,0 +1,58 @@
+---
+title: "Astro로 블로그를 마이그레이션한 이유"
+description: "Next.js에서 Astro로 블로그를 전환하며 느낀 점들을 정리합니다."
+slug: "/hello-astro"
+categories:
+  - name: "Astro"
+    color: "purple"
+  - name: "블로그"
+    color: "blue"
+createdTime: "2026-03-02T00:00:00.000Z"
+lastEditedTime: "2026-03-02T00:00:00.000Z"
+---
+
+## 왜 Astro인가
+
+기존 블로그는 **Next.js**와 **Notion CMS**를 사용하고 있었습니다. 잘 동작했지만 몇 가지 불편한 점이 있었습니다.
+
+- Notion 이미지 URL이 1시간 후 만료됨
+- API 속도 제한 (3 req/s)
+- 마크다운 변환 파이프라인이 복잡함
+
+### Astro의 장점
+
+Astro는 콘텐츠 중심 사이트에 최적화된 프레임워크입니다.
+
+1. **제로 JS 기본** — 필요한 곳에만 JavaScript를 로드
+2. **Content Collections** — Zod 스키마로 타입 안전한 콘텐츠 관리
+3. **MDX 지원** — 마크다운 안에서 컴포넌트 사용 가능
+
+## 코드 예시
+
+```typescript
+// Astro Content Collections 정의
+import { defineCollection, z } from 'astro:content';
+
+const posts = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    categories: z.array(z.object({
+      name: z.string(),
+      color: z.string(),
+    })),
+  }),
+});
+```
+
+### 마이그레이션 과정
+
+기존 Next.js 프로젝트에서 Astro로의 전환은 생각보다 수월했습니다.
+
+- Tailwind CSS는 그대로 사용
+- rehype/remark 플러그인도 호환
+- React 컴포넌트는 **Islands Architecture**로 필요한 곳에만 사용
+
+## 결론
+
+콘텐츠 중심 사이트라면 Astro를 적극 추천합니다. 빌드 속도, 번들 크기, 개발자 경험 모두 만족스럽습니다.

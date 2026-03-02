@@ -141,7 +141,7 @@
         li {
           @apply text-[0.95em] relative;
           counter-increment: item;
-          
+
           &::marker {
             @apply text-stone-500;
           }
@@ -208,7 +208,7 @@
     }
 
     .bookmark-description {
-      @apply text-sm text-stone-400 
+      @apply text-sm text-stone-400
              line-clamp-2 mb-2;
     }
 

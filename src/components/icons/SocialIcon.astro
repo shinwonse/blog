@@ -1,0 +1,18 @@
+---
+import GithubIcon from './GithubIcon.astro';
+import LinkedinIcon from './LinkedinIcon.astro';
+import MailIcon from './MailIcon.astro';
+import InstagramIcon from './InstagramIcon.astro';
+import NaverBlogIcon from './NaverBlogIcon.astro';
+
+interface Props {
+  name: 'github' | 'linkedin' | 'mail' | 'instagram' | 'naver-blog';
+  class?: string;
+}
+const { name, class: className } = Astro.props;
+---
+{name === 'github' && <GithubIcon class={className} />}
+{name === 'linkedin' && <LinkedinIcon class={className} />}
+{name === 'mail' && <MailIcon class={className} />}
+{name === 'instagram' && <InstagramIcon class={className} />}
+{name === 'naver-blog' && <NaverBlogIcon class={className} />}

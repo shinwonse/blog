@@ -1,0 +1,35 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const { title, description, ogImage } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} ogImage={ogImage}>
+  <div class="portfolio-theme relative min-h-screen bg-stone-900 leading-relaxed text-stone-400 antialiased">
+    <!-- Mouse flashlight effect -->
+    <div id="mouse-flashlight" class="pointer-events-none fixed inset-0 z-30 transition duration-300"></div>
+
+    <!-- Noise overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Main content -->
+    <div class="mx-auto min-h-screen max-w-7xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0">
+      <slot />
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const flashlight = document.getElementById('mouse-flashlight');
+  if (flashlight) {
+    document.addEventListener('mousemove', (e) => {
+      flashlight.style.background = `radial-gradient(600px at ${e.clientX}px ${e.clientY}px, rgba(255, 112, 67, 0.08), transparent 80%)`;
+    });
+  }
+</script>
