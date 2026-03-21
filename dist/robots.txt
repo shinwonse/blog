@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /private/
-Disallow: /admin/
-
-Sitemap: https://wonse.dev/sitemap.xml
