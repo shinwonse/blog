@@ -1,0 +1,23 @@
+---
+/**
+ * Shared hover card wrapper for portfolio list items.
+ * Provides the hover background highlight and opacity group effects.
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div
+  class:list={[
+    'group relative grid pb-1 transition-all lg:hover:opacity-100! lg:group-hover/list:opacity-50',
+    className,
+  ]}
+>
+  <div
+    class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-stone-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"
+  />
+  <slot />
+</div>

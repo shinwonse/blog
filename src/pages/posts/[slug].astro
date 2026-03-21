@@ -7,8 +7,6 @@ import Giscus from '@/components/Giscus.astro';
 import Bookmark from '@/components/Bookmark.astro';
 import { toTOCItems } from '@/utils/extractTOC';
 import dayjs from 'dayjs';
-import '@/styles/post.scss';
-import '@/styles/highlight.scss';
 
 export const getStaticPaths = (async () => {
   const posts = await getCollection('posts');

@@ -1,54 +1,47 @@
 import type { Root, Element, Text, RootContent } from 'hast';
 import type { VFile } from 'vfile';
+import type { TOCItem } from './extractTOC';
 
-export interface TOCItem {
-  id: string;
-  tagName: string;
-  text: string;
-}
-
-const titleTags = ['h2', 'h3', 'h4'];
+const HEADING_TAGS = ['h2', 'h3', 'h4'] as const;
 
 function extractText(node: Element | Text): string {
   if (node.type === 'text') return node.value ?? '';
   if ('children' in node) {
-    return node.children
-      .map((child) => extractText(child as Element | Text))
-      .join('');
+    return node.children.map((child) => extractText(child as Element | Text)).join('');
   }
   return '';
 }
 
-function validateTOC(children: RootContent[]): void {
+function toSlug(text: string): string {
+  return text.toLowerCase().replace(/[^a-z0-9가-힣]/g, '-');
+}
+
+/** Assigns Korean-friendly slug IDs to h2–h4 elements. h3 IDs are scoped under their parent h2. */
+function assignHeadingIds(children: RootContent[]): void {
   let currentH2: string | null = null;
 
   for (const child of children) {
     const el = child as Element;
-    if (!titleTags.includes(el.tagName)) continue;
+    if (!HEADING_TAGS.includes(el.tagName as (typeof HEADING_TAGS)[number])) continue;
 
     const title = extractText(el);
-    const tagName = el.tagName;
 
-    if (tagName === 'h2') {
+    if (el.tagName === 'h2') {
       currentH2 = title;
-      const newId = title.toLowerCase().replace(/[^a-z0-9가-힣]/g, '-');
-      el.properties = { ...el.properties, id: newId };
-    } else if (tagName === 'h3' && currentH2) {
-      const newId = `${currentH2.toLowerCase()}-${title.toLowerCase()}`.replace(
-        /[^a-z0-9가-힣]/g,
-        '-',
-      );
-      el.properties = { ...el.properties, id: newId };
-    } else if (tagName === 'h4') {
-      const newId = title.toLowerCase().replace(/[^a-z0-9가-힣]/g, '-');
-      el.properties = { ...el.properties, id: newId };
+      el.properties = { ...el.properties, id: toSlug(title) };
+    } else if (el.tagName === 'h3' && currentH2) {
+      el.properties = { ...el.properties, id: toSlug(`${currentH2}-${title}`) };
+    } else if (el.tagName === 'h4') {
+      el.properties = { ...el.properties, id: toSlug(title) };
     }
   }
 }
 
-function processTOC(children: RootContent[]): TOCItem[] {
+function collectTOC(children: RootContent[]): TOCItem[] {
   return children
-    .filter((child) => titleTags.includes((child as Element).tagName))
+    .filter((child) =>
+      HEADING_TAGS.includes((child as Element).tagName as (typeof HEADING_TAGS)[number]),
+    )
     .map((child) => {
       const el = child as Element;
       return {
@@ -61,7 +54,7 @@ function processTOC(children: RootContent[]): TOCItem[] {
 
 export function rehypeSlugKorean() {
   return (tree: Root, file: VFile) => {
-    validateTOC(tree.children);
-    (file.data as Record<string, unknown>).toc = processTOC(tree.children);
+    assignHeadingIds(tree.children);
+    (file.data as Record<string, unknown>).toc = collectTOC(tree.children);
   };
 }

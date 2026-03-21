@@ -100,10 +100,8 @@ import SocialIcon from '@/components/icons/SocialIcon.astro';
 <script>
   function initSidebar() {
     const NAV_IDS = ['about', 'experience', 'projects', 'writing'];
-    let activeSection = 'about';
 
     function setActiveSection(id: string) {
-      activeSection = id;
 
       // Mobile nav links
       document.querySelectorAll<HTMLAnchorElement>('.mobile-nav-link').forEach((link) => {

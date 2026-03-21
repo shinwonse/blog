@@ -1,6 +1,8 @@
 ---
 import ExperienceCard from '@/components/portfolio/ExperienceCard.astro';
+import HoverCard from '@/components/portfolio/HoverCard.astro';
 import ProjectCard from '@/components/portfolio/ProjectCard.astro';
+import SectionHeader from '@/components/portfolio/SectionHeader.astro';
 import Sidebar from '@/components/portfolio/Sidebar.astro';
 import { EXPERIENCE, PROFILE, PROJECTS, WRITING } from '@/data/portfolio';
 import PortfolioLayout from '@/layouts/PortfolioLayout.astro';
@@ -19,13 +21,7 @@ import PortfolioLayout from '@/layouts/PortfolioLayout.astro';
         class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
         aria-label="About me"
       >
-        <div
-          class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-stone-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0"
-        >
-          <h2 class="text-sm font-bold tracking-widest text-stone-200 uppercase lg:sr-only">
-            About
-          </h2>
-        </div>
+        <SectionHeader title="About" />
         <div class="text-base whitespace-pre-line text-stone-400">
           <p class="mb-4">{PROFILE.about}</p>
           <p>
@@ -44,13 +40,7 @@ import PortfolioLayout from '@/layouts/PortfolioLayout.astro';
         class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
         aria-label="Work experience"
       >
-        <div
-          class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-stone-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0"
-        >
-          <h2 class="text-sm font-bold tracking-widest text-stone-200 uppercase lg:sr-only">
-            Experience
-          </h2>
-        </div>
+        <SectionHeader title="Experience" />
         <ol class="group/list">
           {
             EXPERIENCE.map((exp) => (
@@ -68,13 +58,7 @@ import PortfolioLayout from '@/layouts/PortfolioLayout.astro';
         class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
         aria-label="Selected projects"
       >
-        <div
-          class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-stone-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0"
-        >
-          <h2 class="text-sm font-bold tracking-widest text-stone-200 uppercase lg:sr-only">
-            Projects
-          </h2>
-        </div>
+        <SectionHeader title="Projects" />
         <ul class="group/list">
           {
             PROJECTS.map((project) => (
@@ -92,19 +76,12 @@ import PortfolioLayout from '@/layouts/PortfolioLayout.astro';
         class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
         aria-label="Writing and Activities"
       >
-        <div
-          class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-stone-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0"
-        >
-          <h2 class="text-sm font-bold tracking-widest text-stone-200 uppercase lg:sr-only">
-            Activity
-          </h2>
-        </div>
+        <SectionHeader title="Activity" />
         <ul class="group/list">
           {
             WRITING.map((item) => (
               <li class="mb-12">
-                <div class="group relative grid grid-cols-8 gap-4 transition-all sm:items-center sm:gap-8 md:gap-4 lg:group-hover/list:opacity-50 lg:hover:opacity-100!">
-                  <div class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-stone-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
+                <HoverCard class="grid-cols-8 gap-4 sm:items-center sm:gap-8 md:gap-4">
                   <div class="z-10 col-span-2 text-xs font-semibold tracking-wide text-stone-500 uppercase sm:col-span-2">
                     {item.year}
                   </div>
@@ -117,7 +94,7 @@ import PortfolioLayout from '@/layouts/PortfolioLayout.astro';
                     </h3>
                     <p class="mt-2 text-sm leading-normal">{item.description}</p>
                   </div>
-                </div>
+                </HoverCard>
               </li>
             ))
           }
