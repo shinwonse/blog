@@ -2,8 +2,8 @@ export interface Experience {
   company: string;
   role: string;
   period: string;
-  description: string;
-  skills: string[];
+  description?: string;
+  skills?: string[];
   links?: { label: string; url: string }[];
 }
 
@@ -110,6 +110,11 @@ export const EXPERIENCE: Experience[] = [
     links: [
       { label: 'K-Pop 역직구 이커머스 플랫폼 (Ktown4u)', url: 'https://www.ktown4u.com/' },
     ],
+  },
+  {
+    company: '건국대학교 서울캠퍼스',
+    role: '컴퓨터공학부 졸업',
+    period: '2017. 03 — 2023. 08',
   },
 ];
 

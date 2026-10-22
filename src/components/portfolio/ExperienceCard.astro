@@ -53,15 +53,17 @@ const companyHead = companyWords.join(' ');
         )}
       </div>
     </h3>
-    <p class="mt-2 text-sm leading-normal">{data.description}</p>
-    <ul class="mt-2 flex flex-wrap" aria-label="Technologies used">
-      {data.skills.map((skill) => (
-        <li class="mr-1.5 mt-2">
-          <div class="flex items-center rounded-full bg-accent-400/10 px-3 py-1 text-xs font-medium leading-5 text-accent-400">
-            {skill}
-          </div>
-        </li>
-      ))}
-    </ul>
+    {data.description && <p class="mt-2 text-sm leading-normal">{data.description}</p>}
+    {data.skills && data.skills.length > 0 && (
+      <ul class="mt-2 flex flex-wrap" aria-label="Technologies used">
+        {data.skills.map((skill) => (
+          <li class="mr-1.5 mt-2">
+            <div class="flex items-center rounded-full bg-accent-400/10 px-3 py-1 text-xs font-medium leading-5 text-accent-400">
+              {skill}
+            </div>
+          </li>
+        ))}
+      </ul>
+    )}
   </div>
 </HoverCard>
