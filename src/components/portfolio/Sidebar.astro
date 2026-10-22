@@ -78,11 +78,11 @@ import SocialIcon from '@/components/icons/SocialIcon.astro';
     </nav>
   </div>
 
-  <ul class="ml-1 mt-8 flex items-center" aria-label="Social media">
+  <ul class="mt-8 flex items-center gap-3" aria-label="Social media">
     {SOCIALS.map((social) => (
-      <li class="mr-5 text-xs">
+      <li class="text-xs">
         <a
-          class="block hover:text-stone-100"
+          class="block p-1 hover:text-stone-100"
           href={social.url}
           target="_blank"
           rel="noreferrer noopener"

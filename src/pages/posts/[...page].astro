@@ -19,9 +19,9 @@ const isFirstPage = page.currentPage === 1;
 ---
 
 <PortfolioLayout title="Blog" description="개발하며 배우고 느낀 것들을 기록합니다">
-  <header class="mb-16">
+  <header class="mb-16 lg:pt-24">
     <a
-      class="group/link inline-flex items-baseline text-sm font-medium text-stone-400 hover:text-accent-400"
+      class="group/link -my-2 inline-flex items-baseline py-2 text-sm font-medium text-stone-400 hover:text-accent-400"
       href="/"
     >
       ← Back to Home
@@ -34,7 +34,7 @@ const isFirstPage = page.currentPage === 1;
     </p>
   </header>
 
-  <main>
+  <main class="lg:pb-24">
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
       {posts.map((post, index) => {
         const isWide = index === 0 && isFirstPage;

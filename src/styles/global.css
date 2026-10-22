@@ -77,6 +77,11 @@
     --input: 12 6% 15%;
     --ring: 14 100% 63%;
   }
+
+  body {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
 }
 
 @layer base {

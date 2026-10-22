@@ -24,10 +24,10 @@ const formattedDate = dayjs(post.data.lastEditedTime).format('YYYY년 MM월 DD�
 ---
 
 <PortfolioLayout title={post.data.title} description={post.data.description}>
-  <main class="flex w-full flex-col items-center">
+  <main class="flex w-full flex-col items-center lg:py-24">
     <article class="w-full max-w-3xl">
       <a
-        class="group/link mb-8 inline-flex items-baseline text-sm font-medium text-stone-400 hover:text-accent-400"
+        class="group/link -my-2 mb-6 inline-flex items-baseline py-2 text-sm font-medium text-stone-400 hover:text-accent-400"
         href="/posts"
       >
         ← Back to Posts

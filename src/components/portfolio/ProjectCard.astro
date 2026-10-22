@@ -8,6 +8,11 @@ interface Props {
 }
 
 const { data } = Astro.props;
+
+// Keep the arrow icon on the same line as the last word of the title
+const titleWords = data.title.split(' ');
+const titleLastWord = titleWords.pop();
+const titleHead = titleWords.join(' ');
 ---
 
 <HoverCard class="gap-4 sm:grid-cols-8 sm:gap-8 md:gap-4">
@@ -25,7 +30,10 @@ const { data } = Astro.props;
             class="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"
           />
           <span>
-            {data.title} <ArrowUpRightIcon />
+            {titleHead}{' '}
+            <span class="whitespace-nowrap">
+              {titleLastWord}&nbsp;<ArrowUpRightIcon class="inline-block" />
+            </span>
           </span>
         </a>
       ) : (
@@ -54,7 +62,7 @@ const { data } = Astro.props;
   <div
     class="z-10 mt-1 text-xs font-semibold uppercase tracking-wide text-stone-500 sm:order-1 sm:col-span-2"
   >
-    {data.period && <p class="whitespace-nowrap">{data.period}</p>}
+    {data.period && <p>{data.period}</p>}
     {data.organization && (
       <p class:list={['font-normal text-stone-400', data.period && 'mt-1']}>{data.organization}</p>
     )}

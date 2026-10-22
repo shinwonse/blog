@@ -8,11 +8,16 @@ interface Props {
 }
 
 const { data } = Astro.props;
+
+// Keep the arrow icon on the same line as the last word of the company name
+const companyWords = data.company.split(' ');
+const companyLastWord = companyWords.pop();
+const companyHead = companyWords.join(' ');
 ---
 
 <HoverCard class="sm:grid-cols-8 sm:gap-8 md:gap-4">
   <header
-    class="z-10 mb-2 mt-1 whitespace-nowrap text-xs font-semibold uppercase tracking-wide text-stone-500 sm:col-span-2"
+    class="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-stone-500 sm:col-span-2"
     aria-label={data.period}
   >
     {data.period}
@@ -34,7 +39,10 @@ const { data } = Astro.props;
             <span>
               {data.role} ·{' '}
               <span class="inline-block">
-                {data.company} <ArrowUpRightIcon />
+                {companyHead}{' '}
+                <span class="whitespace-nowrap">
+                  {companyLastWord}&nbsp;<ArrowUpRightIcon class="inline-block" />
+                </span>
               </span>
             </span>
           </a>
