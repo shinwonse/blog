@@ -54,9 +54,9 @@ const { data } = Astro.props;
   <div
     class="z-10 mt-1 text-xs font-semibold uppercase tracking-wide text-stone-500 sm:order-1 sm:col-span-2"
   >
-    <p class="whitespace-nowrap">{data.period}</p>
+    {data.period && <p class="whitespace-nowrap">{data.period}</p>}
     {data.organization && (
-      <p class="mt-1 font-normal text-stone-400">{data.organization}</p>
+      <p class:list={['font-normal text-stone-400', data.period && 'mt-1']}>{data.organization}</p>
     )}
   </div>
 </HoverCard>
